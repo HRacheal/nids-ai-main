@@ -1,0 +1,143 @@
+{
+  "model": "Isolation Forest",
+  "task": "binary anomaly detection",
+  "track": "A",
+  "trained_on": "normal training records only",
+  "config": {
+    "n_estimators": 100,
+    "max_samples": 2048,
+    "max_features": 1.0
+  },
+  "threshold_rule": "95% quantile of validation normal scores",
+  "selection": "validation ROC-AUC",
+  "grid_results": [
+    {
+      "n_estimators": 100,
+      "max_samples": 256,
+      "max_features": 1.0,
+      "val_roc_auc": 0.8801275146627566
+    },
+    {
+      "n_estimators": 100,
+      "max_samples": 256,
+      "max_features": 0.5,
+      "val_roc_auc": 0.8621782551319648
+    },
+    {
+      "n_estimators": 100,
+      "max_samples": 2048,
+      "max_features": 1.0,
+      "val_roc_auc": 0.8887849486803518
+    },
+    {
+      "n_estimators": 100,
+      "max_samples": 2048,
+      "max_features": 0.5,
+      "val_roc_auc": 0.882841763196481
+    },
+    {
+      "n_estimators": 300,
+      "max_samples": 256,
+      "max_features": 1.0,
+      "val_roc_auc": 0.8802145197947213
+    },
+    {
+      "n_estimators": 300,
+      "max_samples": 256,
+      "max_features": 0.5,
+      "val_roc_auc": 0.859922401026393
+    },
+    {
+      "n_estimators": 300,
+      "max_samples": 2048,
+      "max_features": 1.0,
+      "val_roc_auc": 0.8861870381231671
+    },
+    {
+      "n_estimators": 300,
+      "max_samples": 2048,
+      "max_features": 0.5,
+      "val_roc_auc": 0.8837379472140762
+    }
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "test": {
+    "n": 82332,
+    "accuracy": 0.7454209784773842,
+    "precision": 0.8987565445026178,
+    "recall_detection_rate": 0.6058854672196241,
+    "f1": 0.7238180572392346,
+    "false_positive_rate": 0.08362162162162162,
+    "false_negative_rate": 0.3941145327803759,
+    "confusion_matrix": [
+      [
+        33906,
+        3094
+      ],
+      [
+        17866,
+        27466
+      ]
+    ],
+    "roc_auc": 0.8545911154580859,
+    "pr_auc": 0.875256839543199,
+    "by_category": {
+      "Normal": {
+        "flagged_fraction": 0.08362162162162162,
+        "support": 37000
+      },
+      "Generic": {
+        "flagged_fraction": 0.962058184515924,
+        "support": 18871
+      },
+      "Exploits": {
+        "flagged_fraction": 0.37387711103126126,
+        "support": 11132
+      },
+      "Fuzzers": {
+        "flagged_fraction": 0.24150445397558562,
+        "support": 6062
+      },
+      "DoS": {
+        "flagged_fraction": 0.5734898508192712,
+        "support": 4089
+      },
+      "Reconnaissance": {
+        "flagged_fraction": 0.07551487414187644,
+        "support": 3496
+      },
+      "Analysis": {
+        "flagged_fraction": 0.810930576070901,
+        "support": 677
+      },
+      "Backdoor": {
+        "flagged_fraction": 0.8867924528301887,
+        "support": 583
+      },
+      "Shellcode": {
+        "flagged_fraction": 0.0026455026455026454,
+        "support": 378
+      },
+      "Worms": {
+        "flagged_fraction": 0.20454545454545456,
+        "support": 44
+      }
+    },
+    "threshold": 0.5189857531930149
+  },
+  "seed_roc_auc": {
+    "mean": 0.8447627871407982,
+    "std": 0.011226476760631467
+  },
+  "fit_seconds": 0.7548902829488119,
+  "predict_us_per_record": 14.932802844007776,
+  "saved_utc": "2026-11-15 21:35:12",
+  "machine": {
+    "cpu_count_logical": 8,
+    "platform": "Windows-11-10.0.26300-SP0"
+  }
+}

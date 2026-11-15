@@ -24,6 +24,7 @@ data/*.pcap
 artifacts/models/*
 !artifacts/models/.gitkeep
 artifacts/cache/
+artifacts/predictions/
 ml/models/
 
 # Generated session reports

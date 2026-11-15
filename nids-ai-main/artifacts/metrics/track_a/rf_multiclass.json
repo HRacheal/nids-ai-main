@@ -1,0 +1,757 @@
+{
+  "model": "Random Forest",
+  "task": "multiclass",
+  "track": "A",
+  "config": {
+    "min_samples_leaf": 1,
+    "max_features": 0.3,
+    "imbalance": "balanced_subsample",
+    "n_estimators": 150,
+    "criterion": "gini"
+  },
+  "selection": "validation macro-F1 over grid",
+  "grid_results": [
+    {
+      "min_samples_leaf": 1,
+      "max_features": "sqrt",
+      "imbalance": "none",
+      "val_macro_f1": 0.5758263833162841,
+      "val_accuracy": 0.8310578842315369,
+      "fit_seconds": 26.4
+    },
+    {
+      "min_samples_leaf": 1,
+      "max_features": "sqrt",
+      "imbalance": "balanced_subsample",
+      "val_macro_f1": 0.5909139409207681,
+      "val_accuracy": 0.7984830339321357,
+      "fit_seconds": 27.7
+    },
+    {
+      "min_samples_leaf": 1,
+      "max_features": "sqrt",
+      "imbalance": "oversample",
+      "val_macro_f1": 0.5979454063131066,
+      "val_accuracy": 0.8302594810379241,
+      "fit_seconds": 24.7
+    },
+    {
+      "min_samples_leaf": 1,
+      "max_features": 0.3,
+      "imbalance": "none",
+      "val_macro_f1": 0.6424857120978973,
+      "val_accuracy": 0.833932135728543,
+      "fit_seconds": 69.3
+    },
+    {
+      "min_samples_leaf": 1,
+      "max_features": 0.3,
+      "imbalance": "balanced_subsample",
+      "val_macro_f1": 0.6495969329450604,
+      "val_accuracy": 0.8069461077844311,
+      "fit_seconds": 78.6
+    },
+    {
+      "min_samples_leaf": 1,
+      "max_features": 0.3,
+      "imbalance": "oversample",
+      "val_macro_f1": 0.6426496165054474,
+      "val_accuracy": 0.834251497005988,
+      "fit_seconds": 78.4
+    },
+    {
+      "min_samples_leaf": 3,
+      "max_features": "sqrt",
+      "imbalance": "none",
+      "val_macro_f1": 0.5384783250076703,
+      "val_accuracy": 0.8289021956087824,
+      "fit_seconds": 28.0
+    },
+    {
+      "min_samples_leaf": 3,
+      "max_features": "sqrt",
+      "imbalance": "balanced_subsample",
+      "val_macro_f1": 0.6210911079035706,
+      "val_accuracy": 0.7854690618762475,
+      "fit_seconds": 31.6
+    },
+    {
+      "min_samples_leaf": 3,
+      "max_features": "sqrt",
+      "imbalance": "oversample",
+      "val_macro_f1": 0.6017964461717231,
+      "val_accuracy": 0.8287425149700599,
+      "fit_seconds": 28.7
+    },
+    {
+      "min_samples_leaf": 3,
+      "max_features": 0.3,
+      "imbalance": "none",
+      "val_macro_f1": 0.6144083764037079,
+      "val_accuracy": 0.8353293413173652,
+      "fit_seconds": 74.4
+    },
+    {
+      "min_samples_leaf": 3,
+      "max_features": 0.3,
+      "imbalance": "balanced_subsample",
+      "val_macro_f1": 0.6493402555381196,
+      "val_accuracy": 0.8017564870259482,
+      "fit_seconds": 75.0
+    },
+    {
+      "min_samples_leaf": 3,
+      "max_features": 0.3,
+      "imbalance": "oversample",
+      "val_macro_f1": 0.6355739009824553,
+      "val_accuracy": 0.834251497005988,
+      "fit_seconds": 71.4
+    }
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "test": {
+    "n": 82332,
+    "accuracy": 0.7539838701841325,
+    "macro_precision": 0.5386511486658829,
+    "macro_recall": 0.573779245093224,
+    "macro_f1": 0.528544755630835,
+    "weighted_f1": 0.7881014461237661,
+    "per_class": {
+      "Normal": {
+        "precision": 0.9558627136752137,
+        "recall": 0.7737837837837838,
+        "f1": 0.8552395746206237,
+        "support": 37000
+      },
+      "Generic": {
+        "precision": 0.9974982324468374,
+        "recall": 0.9719145779237984,
+        "f1": 0.9845402329701004,
+        "support": 18871
+      },
+      "Exploits": {
+        "precision": 0.7407845456337473,
+        "recall": 0.6751706791232482,
+        "f1": 0.7064573738133283,
+        "support": 11132
+      },
+      "Fuzzers": {
+        "precision": 0.28892338599214684,
+        "recall": 0.5219399538106235,
+        "f1": 0.3719508611062129,
+        "support": 6062
+      },
+      "DoS": {
+        "precision": 0.3642315644383184,
+        "recall": 0.25849841036928345,
+        "f1": 0.30238878558146187,
+        "support": 4089
+      },
+      "Reconnaissance": {
+        "precision": 0.9423465947403911,
+        "recall": 0.7994851258581236,
+        "f1": 0.8650572578149179,
+        "support": 3496
+      },
+      "Analysis": {
+        "precision": 0.03410059676044331,
+        "recall": 0.059084194977843424,
+        "f1": 0.043243243243243246,
+        "support": 677
+      },
+      "Backdoor": {
+        "precision": 0.04634971155758902,
+        "recall": 0.3996569468267582,
+        "f1": 0.08306595365418895,
+        "support": 583
+      },
+      "Shellcode": {
+        "precision": 0.34974747474747475,
+        "recall": 0.7328042328042328,
+        "f1": 0.4735042735042735,
+        "support": 378
+      },
+      "Worms": {
+        "precision": 0.6666666666666666,
+        "recall": 0.5454545454545454,
+        "f1": 0.6,
+        "support": 44
+      }
+    },
+    "confusion_matrix": [
+      [
+        28630,
+        5,
+        624,
+        7213,
+        29,
+        6,
+        354,
+        0,
+        139,
+        0
+      ],
+      [
+        9,
+        18341,
+        387,
+        25,
+        72,
+        0,
+        3,
+        9,
+        20,
+        5
+      ],
+      [
+        122,
+        18,
+        7516,
+        245,
+        824,
+        135,
+        323,
+        1877,
+        67,
+        5
+      ],
+      [
+        1101,
+        10,
+        448,
+        3164,
+        432,
+        5,
+        103,
+        579,
+        220,
+        0
+      ],
+      [
+        44,
+        11,
+        722,
+        109,
+        1057,
+        23,
+        277,
+        1807,
+        37,
+        2
+      ],
+      [
+        14,
+        1,
+        312,
+        17,
+        78,
+        2795,
+        33,
+        219,
+        27,
+        0
+      ],
+      [
+        12,
+        0,
+        57,
+        69,
+        196,
+        0,
+        40,
+        303,
+        0,
+        0
+      ],
+      [
+        12,
+        0,
+        16,
+        72,
+        205,
+        0,
+        40,
+        233,
+        5,
+        0
+      ],
+      [
+        7,
+        0,
+        48,
+        35,
+        9,
+        2,
+        0,
+        0,
+        277,
+        0
+      ],
+      [
+        1,
+        1,
+        16,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        24
+      ]
+    ],
+    "classes": [
+      "Normal",
+      "Generic",
+      "Exploits",
+      "Fuzzers",
+      "DoS",
+      "Reconnaissance",
+      "Analysis",
+      "Backdoor",
+      "Shellcode",
+      "Worms"
+    ],
+    "roc_auc_ovr_per_class": {
+      "Normal": 0.9799263317959271,
+      "Generic": 0.9980174728974307,
+      "Exploits": 0.936456918787623,
+      "Fuzzers": 0.8727070976769613,
+      "DoS": 0.8584287035341643,
+      "Reconnaissance": 0.9704104546668908,
+      "Analysis": 0.8949558193599599,
+      "Backdoor": 0.9284895234370815,
+      "Shellcode": 0.9909769036779311,
+      "Worms": 0.9763237321690561
+    },
+    "pr_auc_per_class": {
+      "Normal": 0.9753859862973904,
+      "Generic": 0.9967048986289664,
+      "Exploits": 0.7973860505484951,
+      "Fuzzers": 0.26181035614903087,
+      "DoS": 0.3446356283006453,
+      "Reconnaissance": 0.8923678878007691,
+      "Analysis": 0.043944230875689785,
+      "Backdoor": 0.04471995770165413,
+      "Shellcode": 0.5571912560216583,
+      "Worms": 0.6005933838434635
+    },
+    "roc_auc_ovr_macro": 0.9406692958003026,
+    "pr_auc_macro": 0.5514739636167764,
+    "binary_view": {
+      "n": 82332,
+      "accuracy": 0.8822814944371569,
+      "precision": 0.8402061855670103,
+      "recall_detection_rate": 0.9708373775699285,
+      "f1": 0.9008105452759129,
+      "false_positive_rate": 0.2262162162162162,
+      "false_negative_rate": 0.029162622430071474,
+      "confusion_matrix": [
+        [
+          28630,
+          8370
+        ],
+        [
+          1322,
+          44010
+        ]
+      ],
+      "roc_auc": 0.9799263317959273,
+      "pr_auc": 0.9836065588731802
+    },
+    "non_overlapping_test": {
+      "n": 73791,
+      "accuracy": 0.7906113211638276,
+      "macro_precision": 0.551451932409115,
+      "macro_recall": 0.6084497929979031,
+      "macro_f1": 0.5614690215904637,
+      "weighted_f1": 0.8133098589183512,
+      "per_class": {
+        "Normal": {
+          "precision": 0.9549991365912623,
+          "recall": 0.7783156946633641,
+          "f1": 0.8576524045097157,
+          "support": 35528
+        },
+        "Generic": {
+          "precision": 0.9972443539208051,
+          "recall": 0.9707271561023967,
+          "f1": 0.9838071035990781,
+          "support": 17149
+        },
+        "Exploits": {
+          "precision": 0.7434933201385453,
+          "recall": 0.8052518756698821,
+          "f1": 0.7731412400308721,
+          "support": 9330
+        },
+        "Fuzzers": {
+          "precision": 0.3019337545471951,
+          "recall": 0.5436993621789347,
+          "f1": 0.3882562934695636,
+          "support": 5801
+        },
+        "DoS": {
+          "precision": 0.35519557487159226,
+          "recall": 0.43117505995203836,
+          "f1": 0.38951473136915077,
+          "support": 2085
+        },
+        "Reconnaissance": {
+          "precision": 0.9201923076923076,
+          "recall": 0.811704834605598,
+          "f1": 0.8625506985128436,
+          "support": 2358
+        },
+        "Analysis": {
+          "precision": 0.061068702290076333,
+          "recall": 0.07246376811594203,
+          "f1": 0.06628003314001657,
+          "support": 552
+        },
+        "Backdoor": {
+          "precision": 0.15359261700725116,
+          "recall": 0.40241796200345425,
+          "f1": 0.22232824427480916,
+          "support": 579
+        },
+        "Shellcode": {
+          "precision": 0.34108527131782945,
+          "recall": 0.7232876712328767,
+          "f1": 0.4635645302897278,
+          "support": 365
+        },
+        "Worms": {
+          "precision": 0.6857142857142857,
+          "recall": 0.5454545454545454,
+          "f1": 0.6075949367088608,
+          "support": 44
+        }
+      },
+      "confusion_matrix": [
+        [
+          27652,
+          5,
+          624,
+          6722,
+          29,
+          6,
+          354,
+          0,
+          136,
+          0
+        ],
+        [
+          9,
+          16647,
+          385,
+          25,
+          52,
+          0,
+          0,
+          6,
+          20,
+          5
+        ],
+        [
+          122,
+          18,
+          7513,
+          241,
+          691,
+          134,
+          93,
+          448,
+          66,
+          4
+        ],
+        [
+          1082,
+          10,
+          447,
+          3154,
+          407,
+          5,
+          79,
+          397,
+          220,
+          0
+        ],
+        [
+          44,
+          11,
+          688,
+          109,
+          899,
+          19,
+          48,
+          229,
+          36,
+          2
+        ],
+        [
+          14,
+          1,
+          311,
+          17,
+          60,
+          1914,
+          1,
+          13,
+          27,
+          0
+        ],
+        [
+          12,
+          0,
+          57,
+          69,
+          183,
+          0,
+          40,
+          191,
+          0,
+          0
+        ],
+        [
+          12,
+          0,
+          16,
+          72,
+          201,
+          0,
+          40,
+          233,
+          5,
+          0
+        ],
+        [
+          7,
+          0,
+          48,
+          35,
+          9,
+          2,
+          0,
+          0,
+          264,
+          0
+        ],
+        [
+          1,
+          1,
+          16,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          24
+        ]
+      ],
+      "classes": [
+        "Normal",
+        "Generic",
+        "Exploits",
+        "Fuzzers",
+        "DoS",
+        "Reconnaissance",
+        "Analysis",
+        "Backdoor",
+        "Shellcode",
+        "Worms"
+      ],
+      "roc_auc_ovr_per_class": {
+        "Normal": 0.9781115261372358,
+        "Generic": 0.9986825138409063,
+        "Exploits": 0.9758491059334746,
+        "Fuzzers": 0.8791268230807235,
+        "DoS": 0.9553672968244099,
+        "Reconnaissance": 0.979336144178569,
+        "Analysis": 0.9151842013768303,
+        "Backdoor": 0.9712356511296082,
+        "Shellcode": 0.9901190239432189,
+        "Worms": 0.9762306201669837
+      },
+      "pr_auc_per_class": {
+        "Normal": 0.9761623243046462,
+        "Generic": 0.9974174477767822,
+        "Exploits": 0.8781982916789011,
+        "Fuzzers": 0.28940768356017044,
+        "DoS": 0.46340808547078577,
+        "Reconnaissance": 0.9146516307646871,
+        "Analysis": 0.06373720090922075,
+        "Backdoor": 0.19390872595925146,
+        "Shellcode": 0.5434463785946451,
+        "Worms": 0.618919394520178
+      },
+      "roc_auc_ovr_macro": 0.961924290661196,
+      "pr_auc_macro": 0.5939257163539268,
+      "binary_view": {
+        "n": 73791,
+        "accuracy": 0.8756081364936104,
+        "precision": 0.8243375858684985,
+        "recall_detection_rate": 0.9659462143585187,
+        "f1": 0.889541390389776,
+        "false_positive_rate": 0.22168430533663588,
+        "false_negative_rate": 0.03405378564148133,
+        "confusion_matrix": [
+          [
+            27652,
+            7876
+          ],
+          [
+            1303,
+            36960
+          ]
+        ],
+        "roc_auc": 0.9781115261372357,
+        "pr_auc": 0.980159182215341
+      }
+    },
+    "bootstrap_macro_f1": {
+      "metric": "macro_f1",
+      "low": 0.5148740868756824,
+      "high": 0.5406507767542096,
+      "n_boot": 1000
+    }
+  },
+  "seed_summary": {
+    "macro_f1_mean": 0.5279058857298936,
+    "macro_f1_std": 0.0005890391532108311,
+    "accuracy_mean": 0.7532267729032048,
+    "accuracy_std": 0.0005453816646531501,
+    "per_seed": [
+      {
+        "seed": 0,
+        "macro_f1": 0.528544755630835,
+        "val_macro_f1": 0.6495969329450604
+      },
+      {
+        "seed": 1,
+        "macro_f1": 0.527123487904803,
+        "val_macro_f1": 0.6498895363836559
+      },
+      {
+        "seed": 2,
+        "macro_f1": 0.5280494136540429,
+        "val_macro_f1": 0.6483862368281639
+      }
+    ]
+  },
+  "fit_seconds": 77.26905926068623,
+  "predict_us_per_record": 23.511770246528872,
+  "model_bytes": 89589220,
+  "top_feature_importance_mdi": [
+    [
+      "sbytes",
+      0.12982353938907865
+    ],
+    [
+      "smean",
+      0.08593398736441739
+    ],
+    [
+      "sttl",
+      0.07753912132805893
+    ],
+    [
+      "ct_srv_dst",
+      0.05200404081142792
+    ],
+    [
+      "ct_dst_src_ltm",
+      0.051301228204831996
+    ],
+    [
+      "service=dns",
+      0.042588097274078966
+    ],
+    [
+      "service=http",
+      0.033002594181404284
+    ],
+    [
+      "dbytes",
+      0.032901844022908536
+    ],
+    [
+      "ct_srv_src",
+      0.0306976582640617
+    ],
+    [
+      "dmean",
+      0.02839350730392111
+    ],
+    [
+      "sload",
+      0.027832685785988045
+    ],
+    [
+      "ct_state_ttl",
+      0.02549425373194195
+    ],
+    [
+      "ct_dst_sport_ltm",
+      0.025488903049018494
+    ],
+    [
+      "proto=udp",
+      0.021023866322487872
+    ],
+    [
+      "dload",
+      0.020477130407995116
+    ],
+    [
+      "service=-",
+      0.018385482136476124
+    ],
+    [
+      "dur",
+      0.017873824687326227
+    ],
+    [
+      "ct_src_dport_ltm",
+      0.017261617034437658
+    ],
+    [
+      "sinpkt",
+      0.016556202946393213
+    ],
+    [
+      "rate",
+      0.01580861653563316
+    ],
+    [
+      "synack",
+      0.014601477088836008
+    ],
+    [
+      "sjit",
+      0.014537005124741681
+    ],
+    [
+      "dloss",
+      0.013360070482178833
+    ],
+    [
+      "ct_src_ltm",
+      0.012809555819580506
+    ],
+    [
+      "sloss",
+      0.012717271078792246
+    ]
+  ],
+  "saved_utc": "2026-11-15 21:30:13",
+  "machine": {
+    "cpu_count_logical": 8,
+    "platform": "Windows-11-10.0.26300-SP0"
+  }
+}

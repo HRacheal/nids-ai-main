@@ -1,0 +1,91 @@
+{
+  "model": "Random Forest",
+  "task": "binary",
+  "track": "A",
+  "config": {
+    "min_samples_leaf": 1,
+    "max_features": 0.3,
+    "imbalance": "balanced_subsample",
+    "n_estimators": 150,
+    "threshold": 0.5
+  },
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "test": {
+    "n": 82332,
+    "accuracy": 0.8697711703833261,
+    "precision": 0.8146249227300826,
+    "recall_detection_rate": 0.9883967175505162,
+    "f1": 0.8931369226782547,
+    "false_positive_rate": 0.27556756756756756,
+    "false_negative_rate": 0.011603282449483809,
+    "confusion_matrix": [
+      [
+        26804,
+        10196
+      ],
+      [
+        526,
+        44806
+      ]
+    ],
+    "roc_auc": 0.9801319186255876,
+    "pr_auc": 0.982969867040538,
+    "by_category": {
+      "Normal": {
+        "flagged_fraction": 0.27556756756756756,
+        "support": 37000
+      },
+      "Generic": {
+        "flagged_fraction": 1.0,
+        "support": 18871
+      },
+      "Exploits": {
+        "flagged_fraction": 0.9954186130075459,
+        "support": 11132
+      },
+      "Fuzzers": {
+        "flagged_fraction": 0.9239524909270868,
+        "support": 6062
+      },
+      "DoS": {
+        "flagged_fraction": 0.9987772071411103,
+        "support": 4089
+      },
+      "Reconnaissance": {
+        "flagged_fraction": 0.9991418764302059,
+        "support": 3496
+      },
+      "Analysis": {
+        "flagged_fraction": 0.9955686853766618,
+        "support": 677
+      },
+      "Backdoor": {
+        "flagged_fraction": 1.0,
+        "support": 583
+      },
+      "Shellcode": {
+        "flagged_fraction": 0.9920634920634921,
+        "support": 378
+      },
+      "Worms": {
+        "flagged_fraction": 1.0,
+        "support": 44
+      }
+    }
+  },
+  "seed_f1": {
+    "mean": 0.8933273263566712,
+    "std": 0.00022196341524964965
+  },
+  "fit_seconds": 66.72348244984944,
+  "predict_us_per_record": 13.948736906024608,
+  "saved_utc": "2026-11-15 21:33:42",
+  "machine": {
+    "cpu_count_logical": 8,
+    "platform": "Windows-11-10.0.26300-SP0"
+  }
+}
