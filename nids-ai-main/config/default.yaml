@@ -1,0 +1,16 @@
+# DeepShield AI configuration.
+# Phase 0 skeleton: later phases add their own sections (data, models, replay).
+project:
+  name: DeepShield AI
+  seeds: [0, 1, 2]
+
+paths:
+  raw_unsw_nb15: data/raw/unsw-nb15
+  processed: data/processed
+  models: artifacts/models
+  metrics: artifacts/metrics
+  figures: artifacts/figures
+
+runtime:
+  device: cpu
+  torch_num_threads: 4

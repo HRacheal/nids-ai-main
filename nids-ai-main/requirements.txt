@@ -1,22 +1,44 @@
-# NIDS — AI-Powered Network Intrusion Detection System
-# pip install -r requirements.txt
+# DeepShield AI - pinned direct dependencies.
+# Every version below passed the Phase 0 compatibility tests
+# (tests/test_environment.py) on Python 3.12.0, Windows 11 x64, CPU only.
+# See docs/environment.md. Exact transitive versions: requirements-lock.txt.
+#
+# Install into the project virtual environment:
+#   python -m venv .venv
+#   .venv\Scripts\python.exe -m pip install -r requirements.txt
+#
+# PyTorch CPU wheels are served from the PyTorch index:
+--extra-index-url https://download.pytorch.org/whl/cpu
 
-# Core ML
-scikit-learn>=1.3.0
-numpy>=1.24.0
-pandas>=2.0.0
-joblib>=1.3.0
-shap>=0.43.0
+# Deep learning and explainability
+torch==2.13.0+cpu
+captum==0.9.0
+shap==0.50.0
 
-# Network Capture (requires root/admin)
-scapy>=2.5.0
+# Machine learning and data
+# scikit-learn 1.9.1, not 1.5.0: the 1.5.0 wheel bundles msvcp140.dll 14.32,
+# which breaks torch 2.13 imports on Windows (WinError 1114). See docs.
+scikit-learn==1.9.1
+scipy==1.18.1
+numpy==2.2.6
+pandas==2.3.3
+pyarrow==21.0.0
+joblib==1.4.2
+PyYAML==6.0.3
 
-# Web Dashboard
-flask>=3.0.0
-flask-socketio>=5.3.0
+# Plotting
+matplotlib==3.9.4
 
-# PDF Reporting
-reportlab>=4.0.0
+# Dashboard
+Flask==3.1.0
+Flask-SocketIO==5.7.2
 
-# Terminal UI
-rich>=13.0.0
+# Reporting and terminal output
+reportlab==5.1.0
+rich==15.0.0
+
+# Optional: live packet capture (also needs Npcap and admin rights on Windows)
+scapy==2.8.0
+
+# Testing
+pytest==8.4.1
