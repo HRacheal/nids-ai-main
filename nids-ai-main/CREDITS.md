@@ -38,3 +38,10 @@ Updated at the end of every phase.
 
 UNSW-NB15 and CIC-IDS2017 citations are added when the datasets are
 introduced (Phases 1 and 6).
+
+**Open issue — dataset redistribution (UNRESOLVED).** It has not yet been
+confirmed whether the UNSW-NB15 licence permits redistributing the dataset,
+or any extract of it, with this project. Until the official licence terms are
+investigated and confirmed, no UNSW-NB15 data is committed to this repository
+or included in the submission package; users download it from the official
+source instead.
