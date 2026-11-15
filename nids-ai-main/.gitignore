@@ -8,9 +8,11 @@ __pycache__/
 
 # Datasets: downloaded from official sources, never committed
 data/raw/*
+data/interim/*
 data/processed/*
 data/external/*
 !data/raw/.gitkeep
+!data/interim/.gitkeep
 !data/processed/.gitkeep
 data/*.csv
 data/*.txt

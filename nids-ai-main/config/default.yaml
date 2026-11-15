@@ -5,7 +5,8 @@ project:
   seeds: [0, 1, 2]
 
 paths:
-  raw_unsw_nb15: data/raw/unsw-nb15
+  raw_unsw_nb15: data/raw/unsw_nb15
+  interim: data/interim
   processed: data/processed
   models: artifacts/models
   metrics: artifacts/metrics
