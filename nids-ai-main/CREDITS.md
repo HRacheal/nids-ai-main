@@ -36,12 +36,19 @@ Updated at the end of every phase.
 
 ## Datasets
 
-UNSW-NB15 and CIC-IDS2017 citations are added when the datasets are
-introduced (Phases 1 and 6).
+**UNSW-NB15** — N. Moustafa and J. Slay, Australian Centre for Cyber Security,
+UNSW Canberra. Official page: <https://research.unsw.edu.au/projects/unsw-nb15-dataset>.
+Free for academic research use; users must cite the five papers listed in
+`docs/dataset_profile.md` §11.
 
-**Open issue — dataset redistribution (UNRESOLVED).** It has not yet been
-confirmed whether the UNSW-NB15 licence permits redistributing the dataset,
-or any extract of it, with this project. Until the official licence terms are
-investigated and confirmed, no UNSW-NB15 data is committed to this repository
-or included in the submission package; users download it from the official
-source instead.
+The files used were obtained from Kaggle mirrors (the official download
+returned HTTP 403): `mrwellsdavid/unsw-nb15` (primary) and
+`alextamboli/unsw-nb15` (cross-check and ground-truth table). Their
+verification against the official documentation, and the differences found,
+are recorded in `docs/dataset_profile.md` §2.
+
+**Open issue — dataset redistribution (UNRESOLVED).** The UNSW-NB15 terms grant
+free academic use but say nothing about redistribution, and the Kaggle
+mirrors state no licence. No UNSW-NB15 data is committed to this repository
+or included in the submission package; users download it themselves
+(`docs/dataset_setup.md`).

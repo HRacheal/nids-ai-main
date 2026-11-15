@@ -1,0 +1,1707 @@
+{
+  "generated_utc": "2026-11-15 21:03:16 UTC",
+  "files": [
+    {
+      "role": "track_a_train",
+      "filename": "UNSW_NB15_testing-set.csv",
+      "required": true,
+      "present": true,
+      "bytes": 32293018,
+      "sha256_ok": true,
+      "role_resolved_by_checksum": "track_a_train",
+      "expected_records": 175341
+    },
+    {
+      "role": "track_a_test",
+      "filename": "UNSW_NB15_training-set.csv",
+      "required": true,
+      "present": true,
+      "bytes": 15380800,
+      "sha256_ok": true,
+      "role_resolved_by_checksum": "track_a_test",
+      "expected_records": 82332
+    },
+    {
+      "role": "track_b_1",
+      "filename": "UNSW-NB15_1.csv",
+      "required": true,
+      "present": true,
+      "bytes": 168979718,
+      "sha256_ok": true,
+      "role_resolved_by_checksum": "track_b_1",
+      "expected_records": 700001
+    },
+    {
+      "role": "track_b_2",
+      "filename": "UNSW-NB15_2.csv",
+      "required": true,
+      "present": true,
+      "bytes": 165221021,
+      "sha256_ok": true,
+      "role_resolved_by_checksum": "track_b_2",
+      "expected_records": 700001
+    },
+    {
+      "role": "track_b_3",
+      "filename": "UNSW-NB15_3.csv",
+      "required": true,
+      "present": true,
+      "bytes": 154588103,
+      "sha256_ok": true,
+      "role_resolved_by_checksum": "track_b_3",
+      "expected_records": 700001
+    },
+    {
+      "role": "track_b_4",
+      "filename": "UNSW-NB15_4.csv",
+      "required": true,
+      "present": true,
+      "bytes": 97588754,
+      "sha256_ok": true,
+      "role_resolved_by_checksum": "track_b_4",
+      "expected_records": 440044
+    },
+    {
+      "role": "features",
+      "filename": "NUSW-NB15_features.csv",
+      "required": true,
+      "present": true,
+      "bytes": 4044,
+      "sha256_ok": true,
+      "role_resolved_by_checksum": "features",
+      "expected_records": 49
+    },
+    {
+      "role": "list_events",
+      "filename": "UNSW-NB15_LIST_EVENTS.csv",
+      "required": false,
+      "present": true,
+      "bytes": 4639,
+      "sha256_ok": true,
+      "role_resolved_by_checksum": "list_events",
+      "expected_records": 208
+    },
+    {
+      "role": "ground_truth",
+      "filename": "NUSW-NB15_GT.csv",
+      "required": false,
+      "present": true,
+      "bytes": 86426111,
+      "sha256_ok": true,
+      "role_resolved_by_checksum": "ground_truth",
+      "expected_records": 174347
+    }
+  ],
+  "features_file": {
+    "rows": 49,
+    "columns": [
+      "No.",
+      "Name",
+      "Type ",
+      "Description"
+    ],
+    "names_match_schema": true,
+    "raw_names_as_written": [
+      "srcip",
+      "sport",
+      "dstip",
+      "dsport",
+      "proto",
+      "state",
+      "dur",
+      "sbytes",
+      "dbytes",
+      "sttl",
+      "dttl",
+      "sloss",
+      "dloss",
+      "service",
+      "Sload",
+      "Dload",
+      "Spkts",
+      "Dpkts",
+      "swin",
+      "dwin",
+      "stcpb",
+      "dtcpb",
+      "smeansz",
+      "dmeansz",
+      "trans_depth",
+      "res_bdy_len",
+      "Sjit",
+      "Djit",
+      "Stime",
+      "Ltime",
+      "Sintpkt",
+      "Dintpkt",
+      "tcprtt",
+      "synack",
+      "ackdat",
+      "is_sm_ips_ports",
+      "ct_state_ttl",
+      "ct_flw_http_mthd",
+      "is_ftp_login",
+      "ct_ftp_cmd",
+      "ct_srv_src",
+      "ct_srv_dst",
+      "ct_dst_ltm",
+      "ct_src_ ltm",
+      "ct_src_dport_ltm",
+      "ct_dst_sport_ltm",
+      "ct_dst_src_ltm",
+      "attack_cat",
+      "Label"
+    ],
+    "types": {
+      "srcip": "nominal",
+      "sport": "integer",
+      "dstip": "nominal",
+      "dsport": "integer",
+      "proto": "nominal",
+      "state": "nominal",
+      "dur": "Float",
+      "sbytes": "Integer",
+      "dbytes": "Integer",
+      "sttl": "Integer",
+      "dttl": "Integer",
+      "sloss": "Integer",
+      "dloss": "Integer",
+      "service": "nominal",
+      "sload": "Float",
+      "dload": "Float",
+      "spkts": "integer",
+      "dpkts": "integer",
+      "swin": "integer",
+      "dwin": "integer",
+      "stcpb": "integer",
+      "dtcpb": "integer",
+      "smeansz": "integer",
+      "dmeansz": "integer",
+      "trans_depth": "integer",
+      "res_bdy_len": "integer",
+      "sjit": "Float",
+      "djit": "Float",
+      "stime": "Timestamp",
+      "ltime": "Timestamp",
+      "sintpkt": "Float",
+      "dintpkt": "Float",
+      "tcprtt": "Float",
+      "synack": "Float",
+      "ackdat": "Float",
+      "is_sm_ips_ports": "Binary",
+      "ct_state_ttl": "Integer",
+      "ct_flw_http_mthd": "Integer",
+      "is_ftp_login": "Binary",
+      "ct_ftp_cmd": "integer",
+      "ct_srv_src": "integer",
+      "ct_srv_dst": "integer",
+      "ct_dst_ltm": "integer",
+      "ct_src_ltm": "integer",
+      "ct_src_dport_ltm": "integer",
+      "ct_dst_sport_ltm": "integer",
+      "ct_dst_src_ltm": "integer",
+      "attack_cat": "nominal",
+      "label": "binary"
+    },
+    "descriptions": {
+      "srcip": "Source IP address",
+      "sport": "Source port number",
+      "dstip": "Destination IP address",
+      "dsport": "Destination port number",
+      "proto": "Transaction protocol",
+      "state": "Indicates to the state and its dependent protocol, e.g. ACC, CLO, CON, ECO, ECR, FIN, INT, MAS, PAR, REQ, RST, TST, TXD, URH, URN, and (-) (if not used state)",
+      "dur": "Record total duration",
+      "sbytes": "Source to destination transaction bytes",
+      "dbytes": "Destination to source transaction bytes",
+      "sttl": "Source to destination time to live value",
+      "dttl": "Destination to source time to live value",
+      "sloss": "Source packets retransmitted or dropped",
+      "dloss": "Destination packets retransmitted or dropped",
+      "service": "http, ftp, smtp, ssh, dns, ftp-data ,irc  and (-) if not much used service",
+      "sload": "Source bits per second",
+      "dload": "Destination bits per second",
+      "spkts": "Source to destination packet count",
+      "dpkts": "Destination to source packet count",
+      "swin": "Source TCP window advertisement value",
+      "dwin": "Destination TCP window advertisement value",
+      "stcpb": "Source TCP base sequence number",
+      "dtcpb": "Destination TCP base sequence number",
+      "smeansz": "Mean of the ?ow packet size transmitted by the src",
+      "dmeansz": "Mean of the ?ow packet size transmitted by the dst",
+      "trans_depth": "Represents the pipelined depth into the connection of http request/response transaction",
+      "res_bdy_len": "Actual uncompressed content size of the data transferred from the server\u0092s http service.",
+      "sjit": "Source jitter (mSec)",
+      "djit": "Destination jitter (mSec)",
+      "stime": "record start time",
+      "ltime": "record last time",
+      "sintpkt": "Source interpacket arrival time (mSec)",
+      "dintpkt": "Destination interpacket arrival time (mSec)",
+      "tcprtt": "TCP connection setup round-trip time, the sum of \u0092synack\u0092 and \u0092ackdat\u0092.",
+      "synack": "TCP connection setup time, the time between the SYN and the SYN_ACK packets.",
+      "ackdat": "TCP connection setup time, the time between the SYN_ACK and the ACK packets.",
+      "is_sm_ips_ports": "If source (1) and destination (3)IP addresses equal and port numbers (2)(4)  equal then, this variable takes value 1 else 0",
+      "ct_state_ttl": "No. for each state (6) according to specific range of values for source/destination time to live (10) (11).",
+      "ct_flw_http_mthd": "No. of flows that has methods such as Get and Post in http service.",
+      "is_ftp_login": "If the ftp session is accessed by user and password then 1 else 0.",
+      "ct_ftp_cmd": "No of flows that has a command in ftp session.",
+      "ct_srv_src": "No. of connections that contain the same service (14) and source address (1) in 100 connections according to the last time (26).",
+      "ct_srv_dst": "No. of connections that contain the same service (14) and destination address (3) in 100 connections according to the last time (26).",
+      "ct_dst_ltm": "No. of connections of the same destination address (3) in 100 connections according to the last time (26).",
+      "ct_src_ltm": "No. of connections of the same source address (1) in 100 connections according to the last time (26).",
+      "ct_src_dport_ltm": "No of connections of the same source address (1) and the destination port (4) in 100 connections according to the last time (26).",
+      "ct_dst_sport_ltm": "No of connections of the same destination address (3) and the source port (2) in 100 connections according to the last time (26).",
+      "ct_dst_src_ltm": "No of connections of the same source (1) and the destination (3) address in in 100 connections according to the last time (26).",
+      "attack_cat": "The name of each attack category. In this data set , nine categories e.g. Fuzzers, Analysis, Backdoors, DoS Exploits, Generic, Reconnaissance, Shellcode and Worms",
+      "label": "0 for normal and 1 for attack records"
+    }
+  },
+  "column_differences": {
+    "track_a_only": [
+      "rate",
+      "id"
+    ],
+    "track_b_only": [
+      "srcip",
+      "sport",
+      "dstip",
+      "dsport",
+      "stime",
+      "ltime"
+    ],
+    "renamed_raw_to_track_a": {
+      "smeansz": "smean",
+      "dmeansz": "dmean",
+      "res_bdy_len": "response_body_len",
+      "sintpkt": "sinpkt",
+      "dintpkt": "dinpkt"
+    }
+  },
+  "track_a": {
+    "columns": [
+      "id",
+      "dur",
+      "proto",
+      "service",
+      "state",
+      "spkts",
+      "dpkts",
+      "sbytes",
+      "dbytes",
+      "rate",
+      "sttl",
+      "dttl",
+      "sload",
+      "dload",
+      "sloss",
+      "dloss",
+      "sinpkt",
+      "dinpkt",
+      "sjit",
+      "djit",
+      "swin",
+      "stcpb",
+      "dtcpb",
+      "dwin",
+      "tcprtt",
+      "synack",
+      "ackdat",
+      "smean",
+      "dmean",
+      "trans_depth",
+      "response_body_len",
+      "ct_srv_src",
+      "ct_state_ttl",
+      "ct_dst_ltm",
+      "ct_src_dport_ltm",
+      "ct_dst_sport_ltm",
+      "ct_dst_src_ltm",
+      "is_ftp_login",
+      "ct_ftp_cmd",
+      "ct_flw_http_mthd",
+      "ct_src_ltm",
+      "ct_srv_dst",
+      "is_sm_ips_ports",
+      "attack_cat",
+      "label"
+    ],
+    "dtypes": {
+      "id": "int64",
+      "dur": "float64",
+      "proto": "object",
+      "service": "object",
+      "state": "object",
+      "spkts": "int64",
+      "dpkts": "int64",
+      "sbytes": "int64",
+      "dbytes": "int64",
+      "rate": "float64",
+      "sttl": "int64",
+      "dttl": "int64",
+      "sload": "float64",
+      "dload": "float64",
+      "sloss": "int64",
+      "dloss": "int64",
+      "sinpkt": "float64",
+      "dinpkt": "float64",
+      "sjit": "float64",
+      "djit": "float64",
+      "swin": "int64",
+      "stcpb": "int64",
+      "dtcpb": "int64",
+      "dwin": "int64",
+      "tcprtt": "float64",
+      "synack": "float64",
+      "ackdat": "float64",
+      "smean": "int64",
+      "dmean": "int64",
+      "trans_depth": "int64",
+      "response_body_len": "int64",
+      "ct_srv_src": "int64",
+      "ct_state_ttl": "int64",
+      "ct_dst_ltm": "int64",
+      "ct_src_dport_ltm": "int64",
+      "ct_dst_sport_ltm": "int64",
+      "ct_dst_src_ltm": "int64",
+      "is_ftp_login": "int64",
+      "ct_ftp_cmd": "int64",
+      "ct_flw_http_mthd": "int64",
+      "ct_src_ltm": "int64",
+      "ct_srv_dst": "int64",
+      "is_sm_ips_ports": "int64",
+      "attack_cat": "object",
+      "label": "int64"
+    },
+    "numeric_features": [
+      "dur",
+      "spkts",
+      "dpkts",
+      "sbytes",
+      "dbytes",
+      "rate",
+      "sttl",
+      "dttl",
+      "sload",
+      "dload",
+      "sloss",
+      "dloss",
+      "sinpkt",
+      "dinpkt",
+      "sjit",
+      "djit",
+      "swin",
+      "stcpb",
+      "dtcpb",
+      "dwin",
+      "tcprtt",
+      "synack",
+      "ackdat",
+      "smean",
+      "dmean",
+      "trans_depth",
+      "response_body_len",
+      "ct_srv_src",
+      "ct_state_ttl",
+      "ct_dst_ltm",
+      "ct_src_dport_ltm",
+      "ct_dst_sport_ltm",
+      "ct_dst_src_ltm",
+      "is_ftp_login",
+      "ct_ftp_cmd",
+      "ct_flw_http_mthd",
+      "ct_src_ltm",
+      "ct_srv_dst",
+      "is_sm_ips_ports"
+    ],
+    "categorical_features": [
+      "proto",
+      "service",
+      "state"
+    ],
+    "train": {
+      "rows": 175341,
+      "columns": 45,
+      "label_counts": {
+        "1": 119341,
+        "0": 56000
+      },
+      "attack_cat_counts": {
+        "Normal": 56000,
+        "Generic": 40000,
+        "Exploits": 33393,
+        "Fuzzers": 18184,
+        "DoS": 12264,
+        "Reconnaissance": 10491,
+        "Analysis": 2000,
+        "Backdoor": 1746,
+        "Shellcode": 1133,
+        "Worms": 130
+      },
+      "missing_total": 0,
+      "missing_by_column": {},
+      "infinite_total": 0,
+      "negative_by_column": {},
+      "id_unique": true,
+      "id_range": [
+        1,
+        175341
+      ],
+      "label_consistent_with_attack_cat": true,
+      "exact_duplicates_excl_id": 67601,
+      "feature_duplicates": 74301,
+      "categorical_levels": {
+        "proto": 133,
+        "service": 13,
+        "state": 9
+      },
+      "binary_like_values": {
+        "is_ftp_login": [
+          0,
+          1,
+          2,
+          4
+        ],
+        "is_sm_ips_ports": [
+          0,
+          1
+        ]
+      },
+      "conflicting_feature_groups": 1772,
+      "rows_in_conflicting_groups": 30528,
+      "duplicate_rows_by_class": {
+        "Generic": 39169,
+        "Exploits": 16596,
+        "DoS": 9822,
+        "Normal": 6047,
+        "Fuzzers": 4649,
+        "Reconnaissance": 4617,
+        "Analysis": 1708,
+        "Backdoor": 1346,
+        "Shellcode": 82,
+        "Worms": 13
+      }
+    },
+    "test": {
+      "rows": 82332,
+      "columns": 45,
+      "label_counts": {
+        "1": 45332,
+        "0": 37000
+      },
+      "attack_cat_counts": {
+        "Normal": 37000,
+        "Generic": 18871,
+        "Exploits": 11132,
+        "Fuzzers": 6062,
+        "DoS": 4089,
+        "Reconnaissance": 3496,
+        "Analysis": 677,
+        "Backdoor": 583,
+        "Shellcode": 378,
+        "Worms": 44
+      },
+      "missing_total": 0,
+      "missing_by_column": {},
+      "infinite_total": 0,
+      "negative_by_column": {},
+      "id_unique": true,
+      "id_range": [
+        1,
+        82332
+      ],
+      "label_consistent_with_attack_cat": true,
+      "exact_duplicates_excl_id": 26387,
+      "feature_duplicates": 28386,
+      "categorical_levels": {
+        "proto": 131,
+        "service": 13,
+        "state": 7
+      },
+      "binary_like_values": {
+        "is_ftp_login": [
+          0,
+          1,
+          2
+        ],
+        "is_sm_ips_ports": [
+          0,
+          1
+        ]
+      },
+      "conflicting_feature_groups": 575,
+      "rows_in_conflicting_groups": 8809,
+      "duplicate_rows_by_class": {
+        "Generic": 17824,
+        "Exploits": 4933,
+        "Normal": 4619,
+        "DoS": 2946,
+        "Fuzzers": 2031,
+        "Reconnaissance": 1204,
+        "Analysis": 619,
+        "Backdoor": 526,
+        "Worms": 1,
+        "Shellcode": 1
+      }
+    },
+    "imbalance_ratio_majority_to_minority_train": 430.8,
+    "test_rows_with_feature_vector_in_train": 8541,
+    "test_rows_with_feature_vector_in_train_by_class": {
+      "DoS": 2004,
+      "Exploits": 1802,
+      "Generic": 1722,
+      "Normal": 1472,
+      "Reconnaissance": 1138,
+      "Fuzzers": 261,
+      "Analysis": 125,
+      "Shellcode": 13,
+      "Backdoor": 4
+    },
+    "categorical": {
+      "proto": {
+        "train_levels": 133,
+        "test_levels": 131,
+        "test_only_levels": [],
+        "test_rows_with_unseen_level": 0,
+        "top_train": {
+          "tcp": 79946,
+          "udp": 63283,
+          "unas": 12084,
+          "arp": 2859,
+          "ospf": 2595,
+          "sctp": 1150,
+          "any": 300,
+          "gre": 225
+        }
+      },
+      "service": {
+        "train_levels": 13,
+        "test_levels": 13,
+        "test_only_levels": [],
+        "test_rows_with_unseen_level": 0,
+        "top_train": {
+          "-": 94168,
+          "dns": 47294,
+          "http": 18724,
+          "smtp": 5058,
+          "ftp-data": 3995,
+          "ftp": 3428,
+          "ssh": 1302,
+          "pop3": 1105
+        }
+      },
+      "state": {
+        "train_levels": 9,
+        "test_levels": 7,
+        "test_only_levels": [
+          "ACC",
+          "CLO"
+        ],
+        "test_rows_with_unseen_level": 5,
+        "top_train": {
+          "INT": 82275,
+          "FIN": 77825,
+          "CON": 13152,
+          "REQ": 1991,
+          "RST": 83,
+          "ECO": 12,
+          "PAR": 1,
+          "URN": 1
+        }
+      }
+    },
+    "numeric_summary_train": {
+      "dur": {
+        "min": 0.0,
+        "median": 0.001582,
+        "mean": 1.3593886921256295,
+        "max": 59.999989,
+        "zero_fraction": 0.0152,
+        "skew": 7.5,
+        "unique": 74039
+      },
+      "spkts": {
+        "min": 1.0,
+        "median": 2.0,
+        "mean": 20.29866374664226,
+        "max": 9616.0,
+        "zero_fraction": 0.0,
+        "skew": 40.22,
+        "unique": 480
+      },
+      "dpkts": {
+        "min": 0.0,
+        "median": 2.0,
+        "mean": 18.969590683297117,
+        "max": 10974.0,
+        "zero_fraction": 0.4807,
+        "skew": 36.76,
+        "unique": 443
+      },
+      "sbytes": {
+        "min": 28.0,
+        "median": 430.0,
+        "mean": 8844.843835725815,
+        "max": 12965233.0,
+        "zero_fraction": 0.0,
+        "skew": 45.3,
+        "unique": 7214
+      },
+      "dbytes": {
+        "min": 0.0,
+        "median": 164.0,
+        "mean": 14928.918564397374,
+        "max": 14655550.0,
+        "zero_fraction": 0.4807,
+        "skew": 39.76,
+        "unique": 6660
+      },
+      "rate": {
+        "min": 0.0,
+        "median": 3225.80652,
+        "mean": 95406.18710518943,
+        "max": 1000000.003,
+        "zero_fraction": 0.0169,
+        "skew": 3.32,
+        "unique": 76991
+      },
+      "sttl": {
+        "min": 0.0,
+        "median": 254.0,
+        "mean": 179.546996994428,
+        "max": 255.0,
+        "zero_fraction": 0.018,
+        "skew": -0.68,
+        "unique": 11
+      },
+      "dttl": {
+        "min": 0.0,
+        "median": 29.0,
+        "mean": 79.60956650184498,
+        "max": 254.0,
+        "zero_fraction": 0.4812,
+        "skew": 0.9,
+        "unique": 6
+      },
+      "sload": {
+        "min": 0.0,
+        "median": 879674.75,
+        "mean": 73454033.19406255,
+        "max": 5988000256.0,
+        "zero_fraction": 0.017,
+        "skew": 8.7,
+        "unique": 80885
+      },
+      "dload": {
+        "min": 0.0,
+        "median": 1447.022705,
+        "mean": 671205.5741883258,
+        "max": 22422730.0,
+        "zero_fraction": 0.4807,
+        "skew": 4.69,
+        "unique": 77474
+      },
+      "sloss": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 4.953000153985662,
+        "max": 4803.0,
+        "zero_fraction": 0.5444,
+        "skew": 44.75,
+        "unique": 409
+      },
+      "dloss": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 6.948009877895073,
+        "max": 5484.0,
+        "zero_fraction": 0.5511,
+        "skew": 41.38,
+        "unique": 370
+      },
+      "sinpkt": {
+        "min": 0.0,
+        "median": 0.279733,
+        "mean": 985.9768636758546,
+        "max": 84371.496,
+        "zero_fraction": 0.0034,
+        "skew": 7.92,
+        "unique": 76161
+      },
+      "dinpkt": {
+        "min": 0.0,
+        "median": 0.006,
+        "mean": 88.21629640844412,
+        "max": 56716.824,
+        "zero_fraction": 0.4807,
+        "skew": 29.68,
+        "unique": 74245
+      },
+      "sjit": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 4976.25422621193,
+        "max": 1460480.016,
+        "zero_fraction": 0.5047,
+        "skew": 17.65,
+        "unique": 77532
+      },
+      "djit": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 604.3538264155103,
+        "max": 289388.2697,
+        "zero_fraction": 0.5346,
+        "skew": 29.54,
+        "unique": 76831
+      },
+      "swin": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 116.25733855743951,
+        "max": 255.0,
+        "zero_fraction": 0.5441,
+        "skew": 0.18,
+        "unique": 13
+      },
+      "stcpb": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 969250421.9105115,
+        "max": 4294958913.0,
+        "zero_fraction": 0.5489,
+        "skew": 1.08,
+        "unique": 75265
+      },
+      "dtcpb": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 968877027.0711528,
+        "max": 4294881924.0,
+        "zero_fraction": 0.5489,
+        "skew": 1.08,
+        "unique": 75089
+      },
+      "dwin": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 115.01362487952048,
+        "max": 255.0,
+        "zero_fraction": 0.5489,
+        "skew": 0.2,
+        "unique": 7
+      },
+      "tcprtt": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 0.04139564435585516,
+        "max": 2.518893,
+        "zero_fraction": 0.5492,
+        "skew": 4.04,
+        "unique": 43319
+      },
+      "synack": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 0.021020450476500082,
+        "max": 2.100352,
+        "zero_fraction": 0.5492,
+        "skew": 5.79,
+        "unique": 40142
+      },
+      "ackdat": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 0.02037519387935508,
+        "max": 1.520884,
+        "zero_fraction": 0.5492,
+        "skew": 5.62,
+        "unique": 37708
+      },
+      "smean": {
+        "min": 28.0,
+        "median": 73.0,
+        "mean": 136.7517694093224,
+        "max": 1504.0,
+        "zero_fraction": 0.0,
+        "skew": 3.73,
+        "unique": 1357
+      },
+      "dmean": {
+        "min": 0.0,
+        "median": 44.0,
+        "mean": 124.17338215249143,
+        "max": 1458.0,
+        "zero_fraction": 0.4807,
+        "skew": 2.83,
+        "unique": 1328
+      },
+      "trans_depth": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 0.10598205781876457,
+        "max": 172.0,
+        "zero_fraction": 0.8983,
+        "skew": 167.34,
+        "unique": 11
+      },
+      "response_body_len": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 2144.2916545474245,
+        "max": 6558056.0,
+        "zero_fraction": 0.9356,
+        "skew": 76.34,
+        "unique": 2386
+      },
+      "ct_srv_src": {
+        "min": 1.0,
+        "median": 5.0,
+        "mean": 9.306437170998226,
+        "max": 63.0,
+        "zero_fraction": 0.0,
+        "skew": 1.52,
+        "unique": 52
+      },
+      "ct_state_ttl": {
+        "min": 0.0,
+        "median": 1.0,
+        "mean": 1.3041787146189425,
+        "max": 6.0,
+        "zero_fraction": 0.2326,
+        "skew": 0.93,
+        "unique": 5
+      },
+      "ct_dst_ltm": {
+        "min": 1.0,
+        "median": 2.0,
+        "mean": 6.193936386811983,
+        "max": 51.0,
+        "zero_fraction": 0.0,
+        "skew": 2.05,
+        "unique": 50
+      },
+      "ct_src_dport_ltm": {
+        "min": 1.0,
+        "median": 1.0,
+        "mean": 5.383538362390998,
+        "max": 51.0,
+        "zero_fraction": 0.0,
+        "skew": 2.17,
+        "unique": 47
+      },
+      "ct_dst_sport_ltm": {
+        "min": 1.0,
+        "median": 1.0,
+        "mean": 4.206255239789895,
+        "max": 46.0,
+        "zero_fraction": 0.0,
+        "skew": 1.7,
+        "unique": 32
+      },
+      "ct_dst_src_ltm": {
+        "min": 1.0,
+        "median": 3.0,
+        "mean": 8.729880632595913,
+        "max": 65.0,
+        "zero_fraction": 0.0,
+        "skew": 1.56,
+        "unique": 54
+      },
+      "is_ftp_login": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 0.014948015581067748,
+        "max": 4.0,
+        "zero_fraction": 0.9854,
+        "skew": 9.94,
+        "unique": 4
+      },
+      "ct_ftp_cmd": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 0.014948015581067748,
+        "max": 4.0,
+        "zero_fraction": 0.9854,
+        "skew": 9.94,
+        "unique": 4
+      },
+      "ct_flw_http_mthd": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 0.13306642485214526,
+        "max": 30.0,
+        "zero_fraction": 0.8983,
+        "skew": 23.45,
+        "unique": 11
+      },
+      "ct_src_ltm": {
+        "min": 1.0,
+        "median": 3.0,
+        "mean": 6.955789005423717,
+        "max": 60.0,
+        "zero_fraction": 0.0,
+        "skew": 1.84,
+        "unique": 50
+      },
+      "ct_srv_dst": {
+        "min": 1.0,
+        "median": 4.0,
+        "mean": 9.100757951648502,
+        "max": 62.0,
+        "zero_fraction": 0.0,
+        "skew": 1.53,
+        "unique": 52
+      },
+      "is_sm_ips_ports": {
+        "min": 0.0,
+        "median": 0.0,
+        "mean": 0.015752162928236977,
+        "max": 1.0,
+        "zero_fraction": 0.9842,
+        "skew": 7.78,
+        "unique": 2
+      }
+    },
+    "spearman_high_pairs_train_sample": [
+      {
+        "a": "trans_depth",
+        "b": "ct_flw_http_mthd",
+        "rho": 1.0
+      },
+      {
+        "a": "is_ftp_login",
+        "b": "ct_ftp_cmd",
+        "rho": 1.0
+      },
+      {
+        "a": "tcprtt",
+        "b": "synack",
+        "rho": 0.997
+      },
+      {
+        "a": "tcprtt",
+        "b": "ackdat",
+        "rho": 0.994
+      },
+      {
+        "a": "dpkts",
+        "b": "dbytes",
+        "rho": 0.99
+      },
+      {
+        "a": "swin",
+        "b": "dwin",
+        "rho": 0.989
+      },
+      {
+        "a": "synack",
+        "b": "ackdat",
+        "rho": 0.985
+      },
+      {
+        "a": "dbytes",
+        "b": "dmean",
+        "rho": 0.963
+      },
+      {
+        "a": "dload",
+        "b": "dmean",
+        "rho": 0.963
+      },
+      {
+        "a": "rate",
+        "b": "sload",
+        "rho": 0.961
+      },
+      {
+        "a": "dttl",
+        "b": "dinpkt",
+        "rho": 0.96
+      },
+      {
+        "a": "dpkts",
+        "b": "dloss",
+        "rho": 0.956
+      },
+      {
+        "a": "sloss",
+        "b": "dloss",
+        "rho": 0.954
+      },
+      {
+        "a": "rate",
+        "b": "sinpkt",
+        "rho": -0.948
+      },
+      {
+        "a": "dbytes",
+        "b": "dloss",
+        "rho": 0.946
+      },
+      {
+        "a": "sloss",
+        "b": "swin",
+        "rho": 0.945
+      },
+      {
+        "a": "stcpb",
+        "b": "dwin",
+        "rho": 0.944
+      },
+      {
+        "a": "dtcpb",
+        "b": "dwin",
+        "rho": 0.944
+      },
+      {
+        "a": "dwin",
+        "b": "tcprtt",
+        "rho": 0.944
+      },
+      {
+        "a": "dwin",
+        "b": "synack",
+        "rho": 0.944
+      },
+      {
+        "a": "dwin",
+        "b": "ackdat",
+        "rho": 0.944
+      },
+      {
+        "a": "dload",
+        "b": "ct_state_ttl",
+        "rho": -0.943
+      },
+      {
+        "a": "dloss",
+        "b": "dwin",
+        "rho": 0.943
+      },
+      {
+        "a": "sloss",
+        "b": "dwin",
+        "rho": 0.939
+      },
+      {
+        "a": "dinpkt",
+        "b": "djit",
+        "rho": 0.937
+      },
+      {
+        "a": "swin",
+        "b": "stcpb",
+        "rho": 0.934
+      },
+      {
+        "a": "swin",
+        "b": "dtcpb",
+        "rho": 0.934
+      },
+      {
+        "a": "swin",
+        "b": "tcprtt",
+        "rho": 0.934
+      },
+      {
+        "a": "swin",
+        "b": "synack",
+        "rho": 0.934
+      },
+      {
+        "a": "swin",
+        "b": "ackdat",
+        "rho": 0.934
+      },
+      {
+        "a": "dpkts",
+        "b": "dmean",
+        "rho": 0.933
+      },
+      {
+        "a": "dloss",
+        "b": "swin",
+        "rho": 0.933
+      },
+      {
+        "a": "dpkts",
+        "b": "sloss",
+        "rho": 0.932
+      },
+      {
+        "a": "spkts",
+        "b": "sloss",
+        "rho": 0.924
+      },
+      {
+        "a": "dbytes",
+        "b": "dload",
+        "rho": 0.924
+      },
+      {
+        "a": "dttl",
+        "b": "tcprtt",
+        "rho": 0.924
+      },
+      {
+        "a": "dttl",
+        "b": "synack",
+        "rho": 0.924
+      },
+      {
+        "a": "dttl",
+        "b": "ackdat",
+        "rho": 0.924
+      },
+      {
+        "a": "dinpkt",
+        "b": "tcprtt",
+        "rho": 0.923
+      },
+      {
+        "a": "dinpkt",
+        "b": "ackdat",
+        "rho": 0.922
+      },
+      {
+        "a": "ct_srv_src",
+        "b": "ct_srv_dst",
+        "rho": 0.922
+      },
+      {
+        "a": "dinpkt",
+        "b": "synack",
+        "rho": 0.921
+      },
+      {
+        "a": "sjit",
+        "b": "djit",
+        "rho": 0.917
+      },
+      {
+        "a": "dinpkt",
+        "b": "sjit",
+        "rho": 0.916
+      },
+      {
+        "a": "dpkts",
+        "b": "dwin",
+        "rho": 0.912
+      },
+      {
+        "a": "djit",
+        "b": "dwin",
+        "rho": 0.912
+      },
+      {
+        "a": "spkts",
+        "b": "dpkts",
+        "rho": 0.911
+      },
+      {
+        "a": "sload",
+        "b": "sinpkt",
+        "rho": -0.908
+      },
+      {
+        "a": "dmean",
+        "b": "ct_state_ttl",
+        "rho": -0.908
+      },
+      {
+        "a": "spkts",
+        "b": "dloss",
+        "rho": 0.906
+      },
+      {
+        "a": "dpkts",
+        "b": "dload",
+        "rho": 0.906
+      },
+      {
+        "a": "sjit",
+        "b": "tcprtt",
+        "rho": 0.903
+      },
+      {
+        "a": "spkts",
+        "b": "sbytes",
+        "rho": 0.902
+      },
+      {
+        "a": "sjit",
+        "b": "ackdat",
+        "rho": 0.902
+      },
+      {
+        "a": "djit",
+        "b": "swin",
+        "rho": 0.902
+      },
+      {
+        "a": "dpkts",
+        "b": "swin",
+        "rho": 0.901
+      },
+      {
+        "a": "sjit",
+        "b": "synack",
+        "rho": 0.901
+      },
+      {
+        "a": "dbytes",
+        "b": "sloss",
+        "rho": 0.9
+      },
+      {
+        "a": "djit",
+        "b": "ackdat",
+        "rho": 0.9
+      }
+    ],
+    "spearman_constant_columns_in_sample": []
+  },
+  "track_b": {
+    "parse_stats": [
+      {
+        "file": "UNSW-NB15_1.csv",
+        "records": 700001,
+        "sport_missing_dash": 2,
+        "sport_hex": 6,
+        "sport_out_of_range": 0,
+        "dsport_missing_dash": 7,
+        "dsport_hex": 56,
+        "dsport_out_of_range": 2,
+        "ct_flw_http_mthd_blank": 0,
+        "is_ftp_login_blank": 0,
+        "ct_ftp_cmd_blank": 0,
+        "is_ftp_login_values": {
+          "0": 686265,
+          "1": 13736
+        },
+        "attack_cat_raw_values": {
+          "''": 677786,
+          "'Generic'": 7522,
+          "'Exploits'": 5409,
+          "' Fuzzers'": 5051,
+          "'Reconnaissance'": 1759,
+          "'DoS'": 1167,
+          "'Backdoors'": 534,
+          "'Analysis'": 526,
+          "'Shellcode'": 223,
+          "'Worms'": 24
+        }
+      },
+      {
+        "file": "UNSW-NB15_2.csv",
+        "records": 700001,
+        "sport_missing_dash": 0,
+        "sport_hex": 0,
+        "sport_out_of_range": 0,
+        "dsport_missing_dash": 0,
+        "dsport_hex": 61,
+        "dsport_out_of_range": 0,
+        "ct_flw_http_mthd_blank": 285256,
+        "is_ftp_login_blank": 307038,
+        "ct_ftp_cmd_blank": 307038,
+        "is_ftp_login_values": {
+          "0.0": 380328,
+          "nan": 307038,
+          "1.0": 12593,
+          "4.0": 32,
+          "2.0": 10
+        },
+        "attack_cat_raw_values": {
+          "''": 647252,
+          "'Generic'": 27883,
+          "'Exploits'": 11103,
+          "' Fuzzers '": 4668,
+          "'DoS'": 4637,
+          "' Reconnaissance '": 3116,
+          "'Analysis'": 608,
+          "'Backdoor'": 370,
+          "' Shellcode '": 324,
+          "'Worms'": 40
+        }
+      },
+      {
+        "file": "UNSW-NB15_3.csv",
+        "records": 700001,
+        "sport_missing_dash": 0,
+        "sport_hex": 0,
+        "sport_out_of_range": 0,
+        "dsport_missing_dash": 0,
+        "dsport_hex": 105,
+        "dsport_out_of_range": 0,
+        "ct_flw_http_mthd_blank": 656405,
+        "is_ftp_login_blank": 689429,
+        "ct_ftp_cmd_blank": 689429,
+        "is_ftp_login_values": {
+          "nan": 689429,
+          "1.0": 10482,
+          "4.0": 84,
+          "2.0": 6
+        },
+        "attack_cat_raw_values": {
+          "''": 542576,
+          "'Generic'": 118198,
+          "'Exploits'": 16574,
+          "' Fuzzers '": 9137,
+          "'DoS'": 5642,
+          "' Reconnaissance '": 5582,
+          "'Analysis'": 873,
+          "'Backdoor'": 759,
+          "' Shellcode '": 593,
+          "'Worms'": 67
+        }
+      },
+      {
+        "file": "UNSW-NB15_4.csv",
+        "records": 440044,
+        "sport_missing_dash": 0,
+        "sport_hex": 0,
+        "sport_out_of_range": 0,
+        "dsport_missing_dash": 0,
+        "dsport_hex": 75,
+        "dsport_out_of_range": 0,
+        "ct_flw_http_mthd_blank": 406484,
+        "is_ftp_login_blank": 433412,
+        "ct_ftp_cmd_blank": 433412,
+        "is_ftp_login_values": {
+          "nan": 433412,
+          "1.0": 6578,
+          "4.0": 40,
+          "2.0": 14
+        },
+        "attack_cat_raw_values": {
+          "''": 351150,
+          "'Generic'": 61878,
+          "'Exploits'": 11439,
+          "' Fuzzers '": 5390,
+          "'DoS'": 4907,
+          "' Reconnaissance '": 3530,
+          "'Analysis'": 670,
+          "'Backdoor'": 666,
+          "' Shellcode '": 371,
+          "'Worms'": 43
+        }
+      }
+    ],
+    "rows": 2540047,
+    "rows_by_file": {
+      "1": 700001,
+      "2": 700001,
+      "3": 700001,
+      "4": 440044
+    },
+    "label_counts": {
+      "0": 2218764,
+      "1": 321283
+    },
+    "attack_cat_counts": {
+      "Normal": 2218764,
+      "Generic": 215481,
+      "Exploits": 44525,
+      "Fuzzers": 24246,
+      "DoS": 16353,
+      "Reconnaissance": 13987,
+      "Analysis": 2677,
+      "Backdoor": 2329,
+      "Shellcode": 1511,
+      "Worms": 174
+    },
+    "label_consistent_with_attack_cat": true,
+    "label_inconsistent_rows": 0,
+    "time": {
+      "stime_min": "2015-01-22 11:49:37 UTC",
+      "stime_max": "2015-02-18 12:21:08 UTC",
+      "by_file": {
+        "1": {
+          "stime_min": "2015-01-22 11:49:37 UTC",
+          "stime_max": "2015-01-22 19:44:02 UTC",
+          "fraction_rows_where_stime_decreases": 0.1538
+        },
+        "2": {
+          "stime_min": "2015-01-22 19:43:15 UTC",
+          "stime_max": "2015-02-18 03:45:29 UTC",
+          "fraction_rows_where_stime_decreases": 0.1442
+        },
+        "3": {
+          "stime_min": "2015-02-18 03:44:59 UTC",
+          "stime_max": "2015-02-18 09:00:09 UTC",
+          "fraction_rows_where_stime_decreases": 0.1213
+        },
+        "4": {
+          "stime_min": "2015-02-18 08:59:44 UTC",
+          "stime_max": "2015-02-18 12:21:08 UTC",
+          "fraction_rows_where_stime_decreases": 0.1188
+        }
+      },
+      "records_by_utc_day": {
+        "2015-01-22": 1052863,
+        "2015-01-23": 34340,
+        "2015-02-18": 1452844
+      },
+      "attacks_by_utc_day": {
+        "2015-01-22": 22215,
+        "2015-02-18": 299068
+      },
+      "ltime_minus_stime_negative": 0,
+      "fraction_rows_where_ltime_decreases_within_file": 0.0
+    },
+    "hourly_counts": {
+      "hour_epoch": [
+        1421924400,
+        1421928000,
+        1421931600,
+        1421935200,
+        1421938800,
+        1421942400,
+        1421946000,
+        1421949600,
+        1421953200,
+        1421956800,
+        1421960400,
+        1421964000,
+        1421967600,
+        1421971200,
+        1424217600,
+        1424221200,
+        1424224800,
+        1424228400,
+        1424232000,
+        1424235600,
+        1424239200,
+        1424242800,
+        1424246400,
+        1424250000,
+        1424253600,
+        1424257200,
+        1424260800
+      ],
+      "normal": [
+        13663,
+        84555,
+        83408,
+        79970,
+        76523,
+        135982,
+        81189,
+        79460,
+        63252,
+        81575,
+        86092,
+        79546,
+        85433,
+        34340,
+        15590,
+        83635,
+        86334,
+        106785,
+        105255,
+        98736,
+        93088,
+        114183,
+        98824,
+        109239,
+        98937,
+        103021,
+        40149
+      ],
+      "attack": [
+        1150,
+        11734,
+        9331,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1120,
+        20729,
+        12016,
+        31645,
+        28053,
+        40015,
+        20594,
+        35107,
+        20886,
+        30755,
+        18665,
+        29672,
+        9811
+      ]
+    },
+    "unique_srcip": 43,
+    "unique_dstip": 47,
+    "srcip_label_purity": {
+      "ips_all_normal": 39,
+      "ips_all_attack": 0,
+      "ips_mixed": 4,
+      "records_from_mixed_ips": 361696,
+      "mixed_ips_detail": {
+        "175.45.176.1": {
+          "records": 127998,
+          "attack_fraction": 0.9212
+        },
+        "175.45.176.3": {
+          "records": 118673,
+          "attack_fraction": 0.8967
+        },
+        "175.45.176.0": {
+          "records": 82999,
+          "attack_fraction": 0.8949
+        },
+        "175.45.176.2": {
+          "records": 32026,
+          "attack_fraction": 0.7081
+        }
+      }
+    },
+    "attack_source_prefixes": {
+      "175.45.176": 321283
+    },
+    "normal_source_prefixes": {
+      "59.166.0": 1942302,
+      "149.171.126": 217316,
+      "175.45.176": 40413,
+      "10.40.182": 9581,
+      "10.40.85": 6949,
+      "10.40.170": 2094,
+      "192.168.241": 108,
+      "127.0.0": 1
+    },
+    "ct_window_verification_first_100k_of_file1": {
+      "records_tested": 100000,
+      "match_rate": {
+        "ct_src_ltm": {
+          "previous_100_incl_self": 0.0504,
+          "next_100_incl_self": 0.0503,
+          "fixed_blocks_of_100": 0.0464
+        },
+        "ct_dst_ltm": {
+          "previous_100_incl_self": 0.0514,
+          "next_100_incl_self": 0.0523,
+          "fixed_blocks_of_100": 0.0512
+        },
+        "ct_dst_src_ltm": {
+          "previous_100_incl_self": 0.4119,
+          "next_100_incl_self": 0.4149,
+          "fixed_blocks_of_100": 0.4653
+        }
+      },
+      "values_exceeding_all_earlier_same_key": {
+        "ct_src_ltm": 20,
+        "ct_dst_ltm": 18,
+        "ct_dst_src_ltm": 81
+      },
+      "examples_first_rows": [
+        {
+          "srcip": "59.166.0.0",
+          "dstip": "149.171.126.6",
+          "ltime": "1421927414",
+          "ct_src_ltm": "3"
+        },
+        {
+          "srcip": "59.166.0.0",
+          "dstip": "149.171.126.9",
+          "ltime": "1421927414",
+          "ct_src_ltm": "3"
+        },
+        {
+          "srcip": "59.166.0.6",
+          "dstip": "149.171.126.7",
+          "ltime": "1421927414",
+          "ct_src_ltm": "2"
+        },
+        {
+          "srcip": "59.166.0.5",
+          "dstip": "149.171.126.5",
+          "ltime": "1421927414",
+          "ct_src_ltm": "1"
+        },
+        {
+          "srcip": "59.166.0.3",
+          "dstip": "149.171.126.0",
+          "ltime": "1421927414",
+          "ct_src_ltm": "1"
+        },
+        {
+          "srcip": "59.166.0.0",
+          "dstip": "149.171.126.9",
+          "ltime": "1421927414",
+          "ct_src_ltm": "3"
+        }
+      ]
+    },
+    "missing_by_column": {
+      "ct_flw_http_mthd": 1348145,
+      "is_ftp_login": 1429879,
+      "ct_ftp_cmd": 1429879
+    },
+    "exact_duplicates": 480633,
+    "feature_duplicates": 523185,
+    "feature_duplicates_by_class": {
+      "Normal": 280114,
+      "Generic": 198148,
+      "Exploits": 18792,
+      "DoS": 12042,
+      "Reconnaissance": 5190,
+      "Fuzzers": 5073,
+      "Backdoor": 1888,
+      "Analysis": 1869,
+      "Shellcode": 59,
+      "Worms": 10
+    },
+    "conflicting_feature_groups": 2579,
+    "rows_in_conflicting_groups": 42282,
+    "list_events_total_row": 2540044,
+    "list_events_totals": {
+      "Analysis": 2677,
+      "Backdoor": 2329,
+      "DoS": 16353,
+      "Exploits": 44525,
+      "Fuzzers": 24246,
+      "Generic": 215481,
+      "Normal": 2218761,
+      "Reconnaissance": 13987,
+      "Shellcode": 1511,
+      "Worms": 174
+    },
+    "list_events_subcategories": 206
+  },
+  "ground_truth": {
+    "rows": 174347,
+    "columns": [
+      "Start time",
+      "Last time",
+      "Attack category",
+      "Attack subcategory",
+      "Protocol",
+      "Source IP",
+      "Source Port",
+      "Destination IP",
+      "Destination Port",
+      "Attack Name",
+      "Attack Reference",
+      "."
+    ],
+    "attack_category_counts": {
+      "Exploits": 68217,
+      "Fuzzers": 33638,
+      "DoS": 24582,
+      "Reconnaissance": 20136,
+      "Generic": 19860,
+      "Backdoor": 4353,
+      "Analysis": 1881,
+      "Shellcode": 1511,
+      "Worms": 169
+    },
+    "unique_attack_names": 7225
+  }
+}
