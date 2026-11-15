@@ -1,0 +1,144 @@
+{
+  "track_a": {
+    "train_rows": 150291,
+    "val_rows": 25050,
+    "test_rows": 82332,
+    "val_fraction_of_official_train": 0.1429,
+    "feature_vectors_shared_train_val": 0,
+    "train_counts": {
+      "Normal": 48000,
+      "Generic": 34285,
+      "Exploits": 28622,
+      "Fuzzers": 15586,
+      "DoS": 10512,
+      "Reconnaissance": 8992,
+      "Analysis": 1715,
+      "Backdoor": 1497,
+      "Shellcode": 971,
+      "Worms": 111
+    },
+    "val_counts": {
+      "Normal": 8000,
+      "Generic": 5715,
+      "Exploits": 4771,
+      "Fuzzers": 2598,
+      "DoS": 1752,
+      "Reconnaissance": 1499,
+      "Analysis": 285,
+      "Backdoor": 249,
+      "Shellcode": 162,
+      "Worms": 19
+    },
+    "test_counts": {
+      "Normal": 37000,
+      "Generic": 18871,
+      "Exploits": 11132,
+      "Fuzzers": 6062,
+      "DoS": 4089,
+      "Reconnaissance": 3496,
+      "Analysis": 677,
+      "Backdoor": 583,
+      "Shellcode": 378,
+      "Worms": 44
+    },
+    "test_rows_overlapping_train": 8541,
+    "n_features": 186,
+    "feature_groups": {
+      "basic": 10,
+      "load_content": 6,
+      "tcp": 7,
+      "timing": 4,
+      "counters": 10,
+      "flags": 2,
+      "proto": 130,
+      "service": 11,
+      "state": 6
+    },
+    "categorical_levels_kept": {
+      "proto": 129,
+      "service": 10,
+      "state": 5
+    }
+  },
+  "track_b": {
+    "gap_seconds": 300,
+    "cuts_utc_epoch": {
+      "2015-01-22": {
+        "train_end": 1421958640,
+        "val_start": 1421958940,
+        "val_end": 1421965620,
+        "test_start": 1421965920,
+        "session_end": 1421972724
+      },
+      "2015-02-18": {
+        "train_end": 1424250183,
+        "val_start": 1424250483,
+        "val_end": 1424255845,
+        "test_start": 1424256145,
+        "session_end": 1424262069
+      }
+    },
+    "rows_dropped_in_gaps": 29140,
+    "blocks": {
+      "train": {
+        "rows": 1778062,
+        "counts": {
+          "Normal": 1545381,
+          "Generic": 153630,
+          "Exploits": 33206,
+          "Fuzzers": 18926,
+          "DoS": 11469,
+          "Reconnaissance": 10498,
+          "Analysis": 2008,
+          "Backdoor": 1666,
+          "Shellcode": 1146,
+          "Worms": 132
+        },
+        "hosts": 43
+      },
+      "val": {
+        "rows": 366323,
+        "counts": {
+          "Normal": 320255,
+          "Generic": 33906,
+          "Exploits": 5485,
+          "Fuzzers": 1981,
+          "DoS": 2314,
+          "Reconnaissance": 1548,
+          "Analysis": 337,
+          "Backdoor": 313,
+          "Shellcode": 164,
+          "Worms": 20
+        },
+        "hosts": 38
+      },
+      "test": {
+        "rows": 366522,
+        "counts": {
+          "Normal": 325072,
+          "Generic": 27900,
+          "Exploits": 5478,
+          "Fuzzers": 2894,
+          "DoS": 2501,
+          "Reconnaissance": 1792,
+          "Analysis": 332,
+          "Backdoor": 344,
+          "Shellcode": 189,
+          "Worms": 20
+        },
+        "hosts": 37
+      }
+    },
+    "n_features": 194,
+    "missing_indicator_columns": [
+      "ct_flw_http_mthd",
+      "ct_ftp_cmd",
+      "is_ftp_login"
+    ],
+    "imputed_medians": {
+      "ct_flw_http_mthd": 0.0,
+      "ct_ftp_cmd": 0.0,
+      "is_ftp_login": 0.0
+    }
+  }
+}
