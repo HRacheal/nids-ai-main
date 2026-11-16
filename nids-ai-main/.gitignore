@@ -1,55 +1,97 @@
-# Python
+# ============================================================
+# DeepShield AI - Git Ignore Rules
+# ============================================================
+
+# Python cache and compiled files
 __pycache__/
 *.py[cod]
 .pytest_cache/
+*.pyo
 
-# Project virtual environment
+# Virtual environments
 .venv/
+venv/
+env/
 
-# Datasets: downloaded from official sources, never committed
+# ============================================================
+# Datasets
+# Downloaded from official sources; do not commit raw datasets
+# ============================================================
+
 data/raw/*
 data/interim/*
 data/processed/*
 data/external/*
+
+# Preserve dataset directory placeholders
 !data/raw/.gitkeep
 !data/interim/.gitkeep
 !data/processed/.gitkeep
+!data/external/.gitkeep
+
+# Dataset file formats
 data/*.csv
 data/*.txt
 data/*.zip
 data/*.gz
 data/*.pcap
+data/*.parquet
 
-# Trained models and caches (metrics and figures ARE committed)
-artifacts/models/*
-!artifacts/models/.gitkeep
+# ============================================================
+# Trained models
+# IMPORTANT: Keep trained model artifacts in Git
+# ============================================================
+
+# Do not ignore artifacts/models/
+# Required model files include .joblib, .pkl, .pt and preprocessors.
+
+# Ignore temporary model caches only
 artifacts/cache/
 artifacts/predictions/
 ml/models/
 
-# Generated session reports
+# ============================================================
+# Generated reports
+# ============================================================
+
 reports/*.pdf
 reports/*.json
 
+# ============================================================
 # Notebooks
+# ============================================================
+
 .ipynb_checkpoints/
 
-# IDE / OS
+# ============================================================
+# IDE and operating system files
+# ============================================================
+
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# dashboard runtime state (prediction history database)
+# ============================================================
+# Dashboard runtime state
+# ============================================================
+
 artifacts/runtime/
 dist/
 
+# ============================================================
 # Secrets and environment files
+# ============================================================
+
 .env
 .env.*
 !.env.example
 
+# ============================================================
 # Runtime and experiment logs
+# ============================================================
+
 *.log
 artifacts/metrics/**/runs/
 artifacts/preliminary/*.log
