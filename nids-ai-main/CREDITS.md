@@ -25,14 +25,15 @@ so the legacy folder is never written to).
 
 Updated at the end of every phase.
 
-| Component | Origin | Status (Phase 0) |
+| Component | Origin | Status (final, Nov 2026) |
 |---|---|---|
-| `core/`, `alerts/`, `mitre/`, `dashboard/`, `reporting/`, `main.py`, `download_dataset.py` | Original | Unchanged |
-| `ml/` | Original | Unchanged; will be superseded by `deepshield/` |
-| `LICENSE`, `README.md` | Original | Unchanged |
+| `core/`, `alerts/`, `mitre/`, `dashboard/`, `reporting/`, `main.py`, `download_dataset.py` | Original | Unchanged (verified by `scripts/verify_legacy.py`) |
+| `ml/` | Original | Unchanged; superseded by `deepshield/` |
+| `LICENSE`, `README.md` | Original | Unchanged. DeepShield documentation is in `docs/` (start with `docs/report.md`) |
 | `requirements.txt` | Original, modified | Exact, tested version pins |
-| `.gitignore` | Original, modified | Broken first/last lines removed; ignores `.venv`, data, models |
-| `deepshield/`, `tests/`, `scripts/`, `config/`, `docs/`, `CREDITS.md`, `pytest.ini`, `requirements-lock.txt` | New (DeepShield AI) | Phase 0 skeleton, environment tests, legacy verification |
+| `.gitignore` | Original, modified | Broken first/last lines removed; ignores `.venv`, data, models, runtime state, `dist/` |
+| `deepshield/`, `tests/`, `scripts/`, `config/`, `docs/`, `CREDITS.md`, `pytest.ini`, `requirements-lock.txt` | New (DeepShield AI) | Data pipeline, models, training, evaluation, explainability, MITRE mapping, inference engine, monitoring, dashboard, packaging; 67 tests |
+| Ideas reused from the original | Original | Overall concept (ML detection + MITRE mapping + SHAP + dashboard + PDF report); re-implemented, not copied, in `deepshield/` |
 
 ## Datasets
 

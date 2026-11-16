@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepShield AI</title>
+<script src="{{ url_for('static', filename='vendor/socket.io.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/chart.umd.min.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+    <div><h1>DeepShield AI</h1><span class="sub">Intelligent network threat detection &amp; security monitoring</span></div>
+  </div>
+  <div class="demo-tag" title="All traffic comes from the UNSW-NB15 dataset">Academic demo · UNSW-NB15 dataset · not a live network</div>
+</header>
+<nav id="tabs" role="tablist">
+  <button data-tab="overview" class="active">Overview</button>
+  <button data-tab="monitor">Traffic monitor</button>
+  <button data-tab="detect">Threat detection</button>
+  <button data-tab="alerts">Alerts &amp; history</button>
+  <button data-tab="models">Model comparison</button>
+  <button data-tab="xai">Explainability</button>
+  <button data-tab="reports">Reports</button>
+</nav>
+<main>
+
+<!-- ── Overview ───────────────────────────────────────────────── -->
+<section id="overview" class="tab active">
+  <div class="tiles">
+    <div class="tile"><span class="lbl">Records analysed</span><span class="val" id="ov-total">0</span></div>
+    <div class="tile"><span class="lbl">Normal</span><span class="val" id="ov-normal">0</span></div>
+    <div class="tile"><span class="lbl">Malicious</span><span class="val" id="ov-mal">0</span><span class="note" id="ov-share"></span></div>
+    <div class="tile"><span class="lbl">Alerts (critical / high)</span><span class="val" id="ov-crit">0</span></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h2>Attack distribution (predicted)</h2><div class="chart"><canvas id="ch-dist"></canvas></div><p class="empty" id="ov-empty">No predictions yet. Start a replay or analyse records.</p></div>
+    <div class="card"><h2>Threat severity</h2><div class="chart"><canvas id="ch-sev"></canvas></div></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h2>Recent alerts</h2><table class="tbl" id="ov-alerts"><thead><tr><th>Time</th><th>Severity</th><th>Category</th><th>Source</th><th>Model</th></tr></thead><tbody></tbody></table></div>
+    <div class="card"><h2>Model status</h2><div id="ov-models"></div><h2 style="margin-top:14px">Top alert sources</h2><div id="ov-sources"></div></div>
+  </div>
+</section>
+
+<!-- ── Traffic monitor (replay) ───────────────────────────────── -->
+<section id="monitor" class="tab">
+  <div class="card banner">Dataset replay: flows from the <b>chronological test block</b> of UNSW-NB15 (never used for training) are fed through the models in time order. Models receive only flow features; the true labels are used solely to score the demo.</div>
+  <div class="controls">
+    <label>Model <select id="rp-model"></select></label>
+    <label>Speed <select id="rp-speed"><option value="100">100 flows/s</option><option value="400" selected>400 flows/s</option><option value="1600">1,600 flows/s</option></select></label>
+    <button id="rp-start" class="primary">Start replay</button>
+    <button id="rp-stop">Stop</button>
+    <label class="chk"><input type="checkbox" id="rp-restart"> restart from the beginning</label>
+    <span id="rp-status" class="muted"></span>
+  </div>
+  <div class="tiles">
+    <div class="tile"><span class="lbl">Flows replayed</span><span class="val" id="rp-n">0</span></div>
+    <div class="tile"><span class="lbl">Demo accuracy</span><span class="val" id="rp-acc">–</span></div>
+    <div class="tile"><span class="lbl">Detection rate</span><span class="val" id="rp-dr">–</span></div>
+    <div class="tile"><span class="lbl">False-positive rate</span><span class="val" id="rp-fpr">–</span></div>
+  </div>
+  <div class="card"><h2>Flows per batch (normal vs flagged)</h2><div class="chart short"><canvas id="ch-live"></canvas></div></div>
+  <div class="card"><h2>Live traffic <span class="muted" id="rp-time"></span></h2>
+    <div class="scroll"><table class="tbl" id="rp-table"><thead><tr><th>Flow time (UTC)</th><th>Source</th><th>Destination</th><th>Proto</th><th>Service</th><th>Prediction</th><th>Confidence</th></tr></thead><tbody></tbody></table></div>
+  </div>
+</section>
+
+<!-- ── Threat detection ───────────────────────────────────────── -->
+<section id="detect" class="tab">
+  <div class="card">
+    <h2>Analyse network flow records</h2>
+    <p class="muted">Upload a CSV in the UNSW-NB15 training/testing-set format (42 feature columns; extra columns such as <code>id</code>, <code>attack_cat</code> or <code>label</code> are ignored), or load random records from the official test set.</p>
+    <div class="controls">
+      <label>Model <select id="dt-model"></select></label>
+      <input type="file" id="dt-file" accept=".csv">
+      <button id="dt-upload" class="primary">Analyse CSV</button>
+      <span class="sep"></span>
+      <label>Test records <select id="dt-cat"><option value="">any category</option></select></label>
+      <label>n <input type="number" id="dt-n" value="20" min="1" max="200" style="width:64px"></label>
+      <button id="dt-sample">Analyse sample</button>
+    </div>
+    <div id="dt-msg" class="msg"></div>
+  </div>
+  <div class="card"><h2>Results <span class="muted" id="dt-summary"></span></h2>
+    <div class="scroll"><table class="tbl" id="dt-table"><thead><tr><th>#</th><th>Proto</th><th>Service</th><th>Prediction</th><th>Confidence / score</th><th>True label</th><th></th></tr></thead><tbody></tbody></table></div>
+  </div>
+  <div class="card" id="dt-explain-card" hidden><h2>Why this prediction? <span class="muted" id="dt-explain-title"></span></h2><div class="chart short"><canvas id="ch-local"></canvas></div><p class="muted" id="dt-explain-note"></p></div>
+</section>
+
+<!-- ── Alerts & history ───────────────────────────────────────── -->
+<section id="alerts" class="tab">
+  <div class="controls">
+    <input type="search" id="al-search" placeholder="Search IP, category, alert id">
+    <select id="al-cat"><option value="">All categories</option></select>
+    <select id="al-sev"><option value="">All severities</option><option>CRITICAL</option><option>HIGH</option><option>MEDIUM</option><option>LOW</option></select>
+    <label class="chk"><input type="radio" name="al-view" value="alerts" checked> Alerts</label>
+    <label class="chk"><input type="radio" name="al-view" value="history"> Full prediction history</label>
+    <button id="al-refresh">Refresh</button>
+    <button id="al-clear" class="danger">Clear history</button>
+  </div>
+  <div class="grid-al">
+    <div class="card"><div class="scroll tall"><table class="tbl" id="al-table"><thead></thead><tbody></tbody></table></div><div class="pager"><button id="al-prev">‹ Prev</button><span id="al-page"></span><button id="al-next">Next ›</button></div></div>
+    <div class="card" id="al-detail"><h2>Alert details</h2><p class="muted">Select an alert.</p></div>
+  </div>
+</section>
+
+<!-- ── Model comparison ───────────────────────────────────────── -->
+<section id="models" class="tab">
+  <div class="card banner">Offline evaluation on held-out data. Track A: official UNSW-NB15 test set (82,332 records). Track B: chronological test block (366,522 flows). Values are seed 0; ± is the standard deviation over seeds 0–2; [ ] is a 95 % bootstrap interval.</div>
+  <div class="card"><h2>Multiclass models</h2><div class="scroll"><table class="tbl" id="md-multi"></table></div></div>
+  <div class="card"><h2>Binary detection &amp; anomaly detectors (attack vs normal)</h2><div class="scroll"><table class="tbl" id="md-binary"></table></div></div>
+  <div class="grid2">
+    <div class="card"><h2>Macro-F1 by model (Track A)</h2><div class="chart"><canvas id="ch-f1"></canvas></div></div>
+    <div class="card"><h2>Confusion matrix <select id="md-cm-model"></select></h2><div id="md-cm"></div></div>
+  </div>
+  <div class="card"><h2>Leave one attack class out (unseen attacks)</h2><div id="md-loco"></div></div>
+  <div class="card"><h2>Evaluation figures</h2><div class="gallery" id="md-figs"></div></div>
+</section>
+
+<!-- ── Explainability ─────────────────────────────────────────── -->
+<section id="xai" class="tab">
+  <div class="card banner">Feature attributions show what each model relied on. They are not evidence that a feature causes an attack. Local explanations for individual predictions are available on the Threat detection page and in alert details.</div>
+  <div class="grid2">
+    <div class="card"><h2>Global importance <select id="xa-method"></select></h2><div class="chart tall"><canvas id="ch-global"></canvas></div></div>
+    <div class="card"><h2>Agreement between methods</h2><table class="tbl" id="xa-agree"></table><p class="muted" id="xa-checks"></p></div>
+  </div>
+  <div class="card"><h2>Explanation figures</h2><div class="gallery" id="xa-figs"></div></div>
+</section>
+
+<!-- ── Reports ────────────────────────────────────────────────── -->
+<section id="reports" class="tab">
+  <div class="card">
+    <h2>Security reports</h2>
+    <p>Reports are generated from the current prediction history: summary of detected activity, attack categories, severity, prediction statistics per model, offline model performance, recent alerts with candidate ATT&amp;CK techniques, and explanations.</p>
+    <div class="controls"><a class="btn primary" href="/api/report.pdf">Download PDF report</a><a class="btn" href="/api/report.csv">Download predictions (CSV)</a></div>
+    <p class="muted" id="rep-info"></p>
+  </div>
+  <div class="card"><h2>Candidate MITRE ATT&amp;CK associations <span class="muted" id="mitre-version"></span></h2><table class="tbl" id="mitre-table"></table></div>
+</section>
+</main>
+<div id="toast" role="status"></div>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -39,3 +39,17 @@ reports/*.json
 .idea/
 .DS_Store
 Thumbs.db
+
+# dashboard runtime state (prediction history database)
+artifacts/runtime/
+dist/
+
+# Secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Runtime and experiment logs
+*.log
+artifacts/metrics/**/runs/
+artifacts/preliminary/*.log

@@ -78,3 +78,60 @@ def _json_default(o):
     if isinstance(o, np.ndarray):
         return o.tolist()
     raise TypeError(type(o))
+
+
+# ── resumable experiment cache ───────────────────────────────────────────────
+# Every completed training run (one configuration, one seed) is written here
+# as soon as it finishes, so an interrupted job restarts where it stopped.
+# The JSON files are small and committed: they document every configuration
+# that was actually tested.
+
+def run_key(**parts) -> str:
+    import hashlib
+    blob = json.dumps(parts, sort_keys=True, default=_json_default)
+    return hashlib.sha1(blob.encode()).hexdigest()[:16]
+
+
+def run_cache_path(track: str, group: str, key: str) -> Path:
+    return ensure_dir(path("metrics") / f"track_{track.lower()}" / "runs" / group) / f"{key}.json"
+
+
+def load_run(track: str, group: str, key: str) -> dict | None:
+    p = run_cache_path(track, group, key)
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
+
+
+def save_run(track: str, group: str, key: str, record: dict) -> None:
+    record = {**record, "saved_utc": time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())}
+    p = run_cache_path(track, group, key)
+    tmp = p.with_suffix(".tmp")
+    tmp.write_text(json.dumps(record, indent=2, default=_json_default), encoding="utf-8")
+    atomic_replace(tmp, p)                           # atomic: never a half-written file
+
+
+def atomic_replace(tmp: Path, dst: Path, attempts: int = 40, wait: float = 0.25) -> None:
+    """os.replace with retries: on Windows, antivirus or the search indexer can briefly
+    hold a just-written file open, which makes the rename fail with 'Access is denied'."""
+    for i in range(attempts):
+        try:
+            Path(tmp).replace(dst)
+            return
+        except PermissionError:
+            if i == attempts - 1:
+                raise
+            time.sleep(wait)
+
+
+def epoch_checkpoint(track: str, group: str, key: str) -> Path:
+    """Per-epoch training state of a run in progress (git-ignored, deleted when the run is saved)."""
+    return ensure_dir(PROJECT_ROOT / "artifacts" / "cache" / "resume" / f"track_{track.lower()}"
+                      / group) / f"{key}.pt"
+
+
+def clear_epoch_checkpoint(track: str, group: str, key: str) -> None:
+    epoch_checkpoint(track, group, key).unlink(missing_ok=True)
+
+
+def release_memory() -> None:
+    import gc
+    gc.collect()

@@ -1,0 +1,231 @@
+{
+  "attack_version": "20.1",
+  "attack_modified": "2026-11-05T15:11:27.678Z",
+  "source": "https://github.com/mitre-attack/attack-stix-data (enterprise-attack.json)",
+  "categories": {
+    "Reconnaissance": {
+      "definition": "Attacks that gather information about a target (probes and scans).",
+      "techniques": [
+        {
+          "id": "T1595",
+          "valid": true,
+          "name": "Active Scanning",
+          "url": "https://attack.mitre.org/techniques/T1595",
+          "tactics": [
+            "reconnaissance"
+          ],
+          "revoked": false,
+          "deprecated": false
+        },
+        {
+          "id": "T1046",
+          "valid": true,
+          "name": "Network Service Discovery",
+          "url": "https://attack.mitre.org/techniques/T1046",
+          "tactics": [
+            "discovery"
+          ],
+          "revoked": false,
+          "deprecated": false
+        }
+      ],
+      "confidence": "medium",
+      "basis": "Scanning hosts and services is the behaviour ATT&CK calls Active Scanning (external) or Network Service Discovery (internal)."
+    },
+    "DoS": {
+      "definition": "Attempts to make a server or network resource unavailable.",
+      "techniques": [
+        {
+          "id": "T1498",
+          "valid": true,
+          "name": "Network Denial of Service",
+          "url": "https://attack.mitre.org/techniques/T1498",
+          "tactics": [
+            "impact"
+          ],
+          "revoked": false,
+          "deprecated": false
+        },
+        {
+          "id": "T1499",
+          "valid": true,
+          "name": "Endpoint Denial of Service",
+          "url": "https://attack.mitre.org/techniques/T1499",
+          "tactics": [
+            "impact"
+          ],
+          "revoked": false,
+          "deprecated": false
+        }
+      ],
+      "confidence": "medium",
+      "basis": "Direct match to the Impact techniques for network- and endpoint-level denial of service."
+    },
+    "Exploits": {
+      "definition": "The attacker exploits a known vulnerability of an operating system or software.",
+      "techniques": [
+        {
+          "id": "T1190",
+          "valid": true,
+          "name": "Exploit Public-Facing Application",
+          "url": "https://attack.mitre.org/techniques/T1190",
+          "tactics": [
+            "initial-access"
+          ],
+          "revoked": false,
+          "deprecated": false
+        },
+        {
+          "id": "T1210",
+          "valid": true,
+          "name": "Exploitation of Remote Services",
+          "url": "https://attack.mitre.org/techniques/T1210",
+          "tactics": [
+            "lateral-movement"
+          ],
+          "revoked": false,
+          "deprecated": false
+        }
+      ],
+      "confidence": "medium",
+      "basis": "Exploitation of exposed services; whether initial access (T1190) or lateral movement (T1210) depends on context the flow record does not contain."
+    },
+    "Worms": {
+      "definition": "Self-replicating code that spreads to other computers.",
+      "techniques": [
+        {
+          "id": "T1210",
+          "valid": true,
+          "name": "Exploitation of Remote Services",
+          "url": "https://attack.mitre.org/techniques/T1210",
+          "tactics": [
+            "lateral-movement"
+          ],
+          "revoked": false,
+          "deprecated": false
+        },
+        {
+          "id": "T1570",
+          "valid": true,
+          "name": "Lateral Tool Transfer",
+          "url": "https://attack.mitre.org/techniques/T1570",
+          "tactics": [
+            "lateral-movement"
+          ],
+          "revoked": false,
+          "deprecated": false
+        }
+      ],
+      "confidence": "medium",
+      "basis": "Worm propagation exploits remote services and transfers its code between hosts."
+    },
+    "Fuzzers": {
+      "definition": "Feeding randomly generated data to a program or network to make it crash.",
+      "techniques": [
+        {
+          "id": "T1595.002",
+          "valid": true,
+          "name": "Vulnerability Scanning",
+          "url": "https://attack.mitre.org/techniques/T1595/002",
+          "tactics": [
+            "reconnaissance"
+          ],
+          "revoked": false,
+          "deprecated": false
+        }
+      ],
+      "confidence": "low",
+      "basis": "Fuzzing a remote service is a form of vulnerability discovery; ATT&CK has no fuzzing-specific technique."
+    },
+    "Analysis": {
+      "definition": "Port scans, spam and HTML-file penetration attacks.",
+      "techniques": [
+        {
+          "id": "T1046",
+          "valid": true,
+          "name": "Network Service Discovery",
+          "url": "https://attack.mitre.org/techniques/T1046",
+          "tactics": [
+            "discovery"
+          ],
+          "revoked": false,
+          "deprecated": false
+        }
+      ],
+      "confidence": "low",
+      "basis": "Only the port-scan part of this mixed category maps to a technique."
+    },
+    "Shellcode": {
+      "definition": "A small payload used to exploit a software vulnerability.",
+      "techniques": [
+        {
+          "id": "T1203",
+          "valid": true,
+          "name": "Exploitation for Client Execution",
+          "url": "https://attack.mitre.org/techniques/T1203",
+          "tactics": [
+            "execution"
+          ],
+          "revoked": false,
+          "deprecated": false
+        },
+        {
+          "id": "T1190",
+          "valid": true,
+          "name": "Exploit Public-Facing Application",
+          "url": "https://attack.mitre.org/techniques/T1190",
+          "tactics": [
+            "initial-access"
+          ],
+          "revoked": false,
+          "deprecated": false
+        }
+      ],
+      "confidence": "low",
+      "basis": "Shellcode is the payload of an exploit; the technique depends on the target (client application or exposed service)."
+    },
+    "Backdoor": {
+      "definition": "Bypassing normal authentication to gain covert remote access.",
+      "techniques": [
+        {
+          "id": "T1133",
+          "valid": true,
+          "name": "External Remote Services",
+          "url": "https://attack.mitre.org/techniques/T1133",
+          "tactics": [
+            "persistence",
+            "initial-access"
+          ],
+          "revoked": false,
+          "deprecated": false
+        },
+        {
+          "id": "T1219",
+          "valid": true,
+          "name": "Remote Access Tools",
+          "url": "https://attack.mitre.org/techniques/T1219",
+          "tactics": [
+            "command-and-control"
+          ],
+          "revoked": false,
+          "deprecated": false
+        }
+      ],
+      "confidence": "low",
+      "basis": "Covert remote access resembles abuse of remote services or remote access tools; the flow record cannot show which."
+    },
+    "Generic": {
+      "definition": "A technique that works against all block ciphers (with a given block and key size), regardless of the cipher's structure.",
+      "techniques": [],
+      "confidence": "none",
+      "basis": "A cryptanalytic attack class; ATT&CK describes adversary behaviour, not cipher attacks, so no technique-level mapping is defensible."
+    },
+    "Normal": {
+      "definition": "Benign traffic.",
+      "techniques": [],
+      "confidence": "none",
+      "basis": ""
+    }
+  },
+  "all_valid": true
+}

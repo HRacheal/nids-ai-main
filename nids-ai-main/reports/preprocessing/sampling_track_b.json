@@ -1,0 +1,141 @@
+{
+  "chosen_fraction": 0.5,
+  "strategy": "most recent fraction of each capture session's training period (chronological; no shuffling before window construction; validation/test blocks unchanged)",
+  "full": {
+    "n": 1778062,
+    "counts": {
+      "Normal": 1545381,
+      "Generic": 153630,
+      "Exploits": 33206,
+      "Fuzzers": 18926,
+      "DoS": 11469,
+      "Reconnaissance": 10498,
+      "Analysis": 2008,
+      "Backdoor": 1666,
+      "Shellcode": 1146,
+      "Worms": 132
+    }
+  },
+  "candidates": {
+    "70%": {
+      "n": 1318799,
+      "fraction_of_full": 0.7417,
+      "counts": {
+        "Normal": 1142107,
+        "Generic": 128316,
+        "Exploits": 21209,
+        "Fuzzers": 10454,
+        "DoS": 7455,
+        "Reconnaissance": 6575,
+        "Analysis": 1129,
+        "Backdoor": 787,
+        "Shellcode": 686,
+        "Worms": 81
+      },
+      "class_share": {
+        "Normal": 0.86602,
+        "Generic": 0.0973,
+        "Exploits": 0.01608,
+        "Fuzzers": 0.00793,
+        "DoS": 0.00565,
+        "Reconnaissance": 0.00499,
+        "Analysis": 0.00086,
+        "Backdoor": 0.0006,
+        "Shellcode": 0.00052,
+        "Worms": 6e-05
+      },
+      "class_retained": {
+        "Normal": 0.739,
+        "Generic": 0.8352,
+        "Exploits": 0.6387,
+        "Fuzzers": 0.5524,
+        "DoS": 0.65,
+        "Reconnaissance": 0.6263,
+        "Analysis": 0.5623,
+        "Backdoor": 0.4724,
+        "Shellcode": 0.5986,
+        "Worms": 0.6136
+      }
+    },
+    "50%": {
+      "n": 938175,
+      "fraction_of_full": 0.5276,
+      "counts": {
+        "Normal": 819358,
+        "Generic": 84726,
+        "Exploits": 14571,
+        "Fuzzers": 7436,
+        "DoS": 5304,
+        "Reconnaissance": 4721,
+        "Analysis": 790,
+        "Backdoor": 722,
+        "Shellcode": 490,
+        "Worms": 57
+      },
+      "class_share": {
+        "Normal": 0.87335,
+        "Generic": 0.09031,
+        "Exploits": 0.01553,
+        "Fuzzers": 0.00793,
+        "DoS": 0.00565,
+        "Reconnaissance": 0.00503,
+        "Analysis": 0.00084,
+        "Backdoor": 0.00077,
+        "Shellcode": 0.00052,
+        "Worms": 6e-05
+      },
+      "class_retained": {
+        "Normal": 0.5302,
+        "Generic": 0.5515,
+        "Exploits": 0.4388,
+        "Fuzzers": 0.3929,
+        "DoS": 0.4625,
+        "Reconnaissance": 0.4497,
+        "Analysis": 0.3934,
+        "Backdoor": 0.4334,
+        "Shellcode": 0.4276,
+        "Worms": 0.4318
+      }
+    },
+    "30%": {
+      "n": 513260,
+      "fraction_of_full": 0.2887,
+      "counts": {
+        "Normal": 453555,
+        "Generic": 40026,
+        "Exploits": 7998,
+        "Fuzzers": 4708,
+        "DoS": 3068,
+        "Reconnaissance": 2845,
+        "Analysis": 350,
+        "Backdoor": 383,
+        "Shellcode": 291,
+        "Worms": 36
+      },
+      "class_share": {
+        "Normal": 0.88367,
+        "Generic": 0.07798,
+        "Exploits": 0.01558,
+        "Fuzzers": 0.00917,
+        "DoS": 0.00598,
+        "Reconnaissance": 0.00554,
+        "Analysis": 0.00068,
+        "Backdoor": 0.00075,
+        "Shellcode": 0.00057,
+        "Worms": 7e-05
+      },
+      "class_retained": {
+        "Normal": 0.2935,
+        "Generic": 0.2605,
+        "Exploits": 0.2409,
+        "Fuzzers": 0.2488,
+        "DoS": 0.2675,
+        "Reconnaissance": 0.271,
+        "Analysis": 0.1743,
+        "Backdoor": 0.2299,
+        "Shellcode": 0.2539,
+        "Worms": 0.2727
+      }
+    }
+  }
+}

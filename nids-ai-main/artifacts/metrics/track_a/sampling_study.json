@@ -1,0 +1,317 @@
+{
+  "purpose": "choose the Track A training fraction for leave-one-class-out (validation data only)",
+  "strategy": "per-class random sample of the training split, seed 0; classes with fewer than 2000 training records kept whole",
+  "decision_rule": "use 50% if RF and MLP both lose <= 0.02 validation macro-F1 versus full training data (same configuration, seed 0); else 70 % under the same rule; else full data. Test data not used.",
+  "reference_full_data_val_macro_f1": {
+    "rf": 0.6495969329450604,
+    "mlp": 0.5851593527701726
+  },
+  "results": [
+    {
+      "model": "rf",
+      "fraction": 0.7,
+      "n_train": 106491,
+      "val_macro_f1": 0.6427168782186768,
+      "val_accuracy": 0.8015968063872255,
+      "val_macro_precision": 0.6476269898866799,
+      "val_macro_recall": 0.671054586714298,
+      "val_per_class_f1": {
+        "Normal": 0.9276926939492844,
+        "Generic": 0.9896816297733486,
+        "Exploits": 0.6755033137426535,
+        "Fuzzers": 0.7345010824640819,
+        "DoS": 0.4524793388429752,
+        "Reconnaissance": 0.8389955686853766,
+        "Analysis": 0.18181818181818182,
+        "Backdoor": 0.1528127623845508,
+        "Shellcode": 0.631578947368421,
+        "Worms": 0.8421052631578947
+      },
+      "fit_seconds": 33.0,
+      "peak_memory_mb": null,
+      "epochs_run": null,
+      "drop_vs_full": 0.006880054726383533
+    },
+    {
+      "model": "mlp",
+      "fraction": 0.7,
+      "n_train": 106491,
+      "val_macro_f1": 0.5765843779855983,
+      "val_accuracy": 0.7829540918163672,
+      "val_macro_precision": 0.6017033777590772,
+      "val_macro_recall": 0.6738922310546271,
+      "val_per_class_f1": {
+        "Normal": 0.8923754472887421,
+        "Generic": 0.9891256299177792,
+        "Exploits": 0.6407914764079148,
+        "Fuzzers": 0.7025731181077194,
+        "DoS": 0.47175732217573224,
+        "Reconnaissance": 0.813858695652174,
+        "Analysis": 0.2979591836734694,
+        "Backdoor": 0.18120805369127516,
+        "Shellcode": 0.5703125,
+        "Worms": 0.20588235294117646
+      },
+      "fit_seconds": 32.0,
+      "peak_memory_mb": null,
+      "epochs_run": 30,
+      "drop_vs_full": 0.008574974784574363
+    },
+    {
+      "model": "rf",
+      "fraction": 0.5,
+      "n_train": 77292,
+      "val_macro_f1": 0.6390108293966159,
+      "val_accuracy": 0.7968463073852295,
+      "val_macro_precision": 0.6411818388622686,
+      "val_macro_recall": 0.6720970004739839,
+      "val_per_class_f1": {
+        "Normal": 0.9272498426683449,
+        "Generic": 0.9890498057223596,
+        "Exploits": 0.6726681670417605,
+        "Fuzzers": 0.7306025994486018,
+        "DoS": 0.43617481609692776,
+        "Reconnaissance": 0.8330261702911905,
+        "Analysis": 0.19424460431654678,
+        "Backdoor": 0.14215686274509803,
+        "Shellcode": 0.6754617414248021,
+        "Worms": 0.7894736842105263
+      },
+      "fit_seconds": 20.0,
+      "peak_memory_mb": null,
+      "epochs_run": null,
+      "drop_vs_full": 0.01058610354844447
+    },
+    {
+      "model": "mlp",
+      "fraction": 0.5,
+      "n_train": 77292,
+      "val_macro_f1": 0.5702794846719134,
+      "val_accuracy": 0.7792415169660679,
+      "val_macro_precision": 0.5693536686674624,
+      "val_macro_recall": 0.6734832936659305,
+      "val_per_class_f1": {
+        "Normal": 0.8912788693553947,
+        "Generic": 0.988948810892052,
+        "Exploits": 0.6352370001277629,
+        "Fuzzers": 0.6969313508383423,
+        "DoS": 0.4646358543417367,
+        "Reconnaissance": 0.8209576682859125,
+        "Analysis": 0.2751540041067762,
+        "Backdoor": 0.17204301075268819,
+        "Shellcode": 0.5561694290976059,
+        "Worms": 0.2014388489208633
+      },
+      "fit_seconds": 20.2,
+      "peak_memory_mb": null,
+      "epochs_run": 30,
+      "drop_vs_full": 0.014879868098259252
+    },
+    {
+      "model": "rf",
+      "fraction": 0.3,
+      "n_train": 48095,
+      "val_macro_f1": 0.6236579358463145,
+      "val_accuracy": 0.7821556886227545,
+      "val_macro_precision": 0.6172300041041153,
+      "val_macro_recall": 0.6908805127358351,
+      "val_per_class_f1": {
+        "Normal": 0.919044919044919,
+        "Generic": 0.988343341575415,
+        "Exploits": 0.6675817319690541,
+        "Fuzzers": 0.7038728897715988,
+        "DoS": 0.3911419423692636,
+        "Reconnaissance": 0.8361623616236162,
+        "Analysis": 0.17059639389736478,
+        "Backdoor": 0.13985064494229463,
+        "Shellcode": 0.6757990867579908,
+        "Worms": 0.7441860465116279
+      },
+      "fit_seconds": 10.6,
+      "peak_memory_mb": null,
+      "epochs_run": null,
+      "drop_vs_full": 0.02593899709874592
+    },
+    {
+      "model": "mlp",
+      "fraction": 0.3,
+      "n_train": 48095,
+      "val_macro_f1": 0.5656649758198087,
+      "val_accuracy": 0.7815568862275449,
+      "val_macro_precision": 0.5504278719051361,
+      "val_macro_recall": 0.6532166605561411,
+      "val_per_class_f1": {
+        "Normal": 0.893564694630414,
+        "Generic": 0.9886825817860301,
+        "Exploits": 0.6477147408405832,
+        "Fuzzers": 0.6990733214111526,
+        "DoS": 0.4566660345154561,
+        "Reconnaissance": 0.8053962900505902,
+        "Analysis": 0.27472527472527475,
+        "Backdoor": 0.1445221445221445,
+        "Shellcode": 0.5411764705882353,
+        "Worms": 0.20512820512820512
+      },
+      "fit_seconds": 13.3,
+      "peak_memory_mb": null,
+      "epochs_run": 30,
+      "drop_vs_full": 0.019494376950363934
+    }
+  ],
+  "chosen_fraction": 0.5,
+  "class_distribution": {
+    "full": {
+      "n": 150291,
+      "counts": {
+        "Normal": 48000,
+        "Generic": 34285,
+        "Exploits": 28622,
+        "Fuzzers": 15586,
+        "DoS": 10512,
+        "Reconnaissance": 8992,
+        "Analysis": 1715,
+        "Backdoor": 1497,
+        "Shellcode": 971,
+        "Worms": 111
+      },
+      "class_share": {
+        "Normal": 0.31938,
+        "Generic": 0.22812,
+        "Exploits": 0.19044,
+        "Fuzzers": 0.10371,
+        "DoS": 0.06994,
+        "Reconnaissance": 0.05983,
+        "Analysis": 0.01141,
+        "Backdoor": 0.00996,
+        "Shellcode": 0.00646,
+        "Worms": 0.00074
+      }
+    },
+    "70%": {
+      "n": 106491,
+      "fraction_of_full": 0.7086,
+      "counts": {
+        "Normal": 33600,
+        "Generic": 24000,
+        "Exploits": 20035,
+        "Fuzzers": 10910,
+        "DoS": 7358,
+        "Reconnaissance": 6294,
+        "Analysis": 1715,
+        "Backdoor": 1497,
+        "Shellcode": 971,
+        "Worms": 111
+      },
+      "class_share": {
+        "Normal": 0.31552,
+        "Generic": 0.22537,
+        "Exploits": 0.18814,
+        "Fuzzers": 0.10245,
+        "DoS": 0.0691,
+        "Reconnaissance": 0.0591,
+        "Analysis": 0.0161,
+        "Backdoor": 0.01406,
+        "Shellcode": 0.00912,
+        "Worms": 0.00104
+      },
+      "class_retained": {
+        "Normal": 0.7,
+        "Generic": 0.7,
+        "Exploits": 0.7,
+        "Fuzzers": 0.7,
+        "DoS": 0.7,
+        "Reconnaissance": 0.7,
+        "Analysis": 1.0,
+        "Backdoor": 1.0,
+        "Shellcode": 1.0,
+        "Worms": 1.0
+      }
+    },
+    "50%": {
+      "n": 77292,
+      "fraction_of_full": 0.5143,
+      "counts": {
+        "Normal": 24000,
+        "Generic": 17142,
+        "Exploits": 14311,
+        "Fuzzers": 7793,
+        "DoS": 5256,
+        "Reconnaissance": 4496,
+        "Analysis": 1715,
+        "Backdoor": 1497,
+        "Shellcode": 971,
+        "Worms": 111
+      },
+      "class_share": {
+        "Normal": 0.31051,
+        "Generic": 0.22178,
+        "Exploits": 0.18515,
+        "Fuzzers": 0.10083,
+        "DoS": 0.068,
+        "Reconnaissance": 0.05817,
+        "Analysis": 0.02219,
+        "Backdoor": 0.01937,
+        "Shellcode": 0.01256,
+        "Worms": 0.00144
+      },
+      "class_retained": {
+        "Normal": 0.5,
+        "Generic": 0.5,
+        "Exploits": 0.5,
+        "Fuzzers": 0.5,
+        "DoS": 0.5,
+        "Reconnaissance": 0.5,
+        "Analysis": 1.0,
+        "Backdoor": 1.0,
+        "Shellcode": 1.0,
+        "Worms": 1.0
+      }
+    },
+    "30%": {
+      "n": 48095,
+      "fraction_of_full": 0.32,
+      "counts": {
+        "Normal": 14400,
+        "Generic": 10286,
+        "Exploits": 8587,
+        "Fuzzers": 4676,
+        "DoS": 3154,
+        "Reconnaissance": 2698,
+        "Analysis": 1715,
+        "Backdoor": 1497,
+        "Shellcode": 971,
+        "Worms": 111
+      },
+      "class_share": {
+        "Normal": 0.29941,
+        "Generic": 0.21387,
+        "Exploits": 0.17854,
+        "Fuzzers": 0.09722,
+        "DoS": 0.06558,
+        "Reconnaissance": 0.0561,
+        "Analysis": 0.03566,
+        "Backdoor": 0.03113,
+        "Shellcode": 0.02019,
+        "Worms": 0.00231
+      },
+      "class_retained": {
+        "Normal": 0.3,
+        "Generic": 0.3,
+        "Exploits": 0.3,
+        "Fuzzers": 0.3,
+        "DoS": 0.3,
+        "Reconnaissance": 0.3,
+        "Analysis": 1.0,
+        "Backdoor": 1.0,
+        "Shellcode": 1.0,
+        "Worms": 1.0
+      }
+    }
+  },
+  "seconds": 132,
+  "saved_utc": "2026-11-16 06:08:48",
+  "machine": {
+    "cpu_count_logical": 8,
+    "platform": "Windows-11-10.0.26300-SP0"
+  }
+}
