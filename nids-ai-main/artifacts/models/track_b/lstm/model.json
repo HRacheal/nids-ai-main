@@ -1,0 +1,35 @@
+{
+  "arch": "FlowLSTM",
+  "params": {
+    "n_in": 194,
+    "n_out": 10,
+    "proj": 64,
+    "hidden": 64,
+    "layers": 1,
+    "dropout": 0.2
+  },
+  "train_config": {
+    "lr": 0.001,
+    "batch_size": 512,
+    "max_epochs": 15,
+    "patience": 3,
+    "weight_decay": 0.0,
+    "seed": 0
+  },
+  "n_parameters": 46410,
+  "seq_len": 4,
+  "entity": "srcip",
+  "task": "multiclass",
+  "classes": [
+    "Normal",
+    "Generic",
+    "Exploits",
+    "Fuzzers",
+    "DoS",
+    "Reconnaissance",
+    "Analysis",
+    "Backdoor",
+    "Shellcode",
+    "Worms"
+  ]
+}

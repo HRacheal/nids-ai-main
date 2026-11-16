@@ -1,0 +1,37 @@
+{
+  "arch": "CNN1D",
+  "params": {
+    "n_numeric": 39,
+    "n_categorical": 147,
+    "n_out": 10,
+    "dropout": 0.3,
+    "channels": [
+      32,
+      64
+    ],
+    "kernel": 5
+  },
+  "train_config": {
+    "lr": 0.001,
+    "batch_size": 512,
+    "max_epochs": 30,
+    "patience": 4,
+    "weight_decay": 0.0,
+    "seed": 0
+  },
+  "n_parameters": 58250,
+  "imbalance": "sqrt",
+  "task": "multiclass",
+  "classes": [
+    "Normal",
+    "Generic",
+    "Exploits",
+    "Fuzzers",
+    "DoS",
+    "Reconnaissance",
+    "Analysis",
+    "Backdoor",
+    "Shellcode",
+    "Worms"
+  ]
+}

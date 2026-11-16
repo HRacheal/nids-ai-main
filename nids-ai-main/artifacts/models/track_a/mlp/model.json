@@ -1,0 +1,35 @@
+{
+  "arch": "MLP",
+  "params": {
+    "n_in": 186,
+    "n_out": 10,
+    "hidden": [
+      128,
+      64
+    ],
+    "dropout": 0.2
+  },
+  "train_config": {
+    "lr": 0.001,
+    "batch_size": 512,
+    "max_epochs": 30,
+    "patience": 4,
+    "weight_decay": 0.0,
+    "seed": 0
+  },
+  "n_parameters": 33226,
+  "imbalance": "sqrt",
+  "task": "multiclass",
+  "classes": [
+    "Normal",
+    "Generic",
+    "Exploits",
+    "Fuzzers",
+    "DoS",
+    "Reconnaissance",
+    "Analysis",
+    "Backdoor",
+    "Shellcode",
+    "Worms"
+  ]
+}

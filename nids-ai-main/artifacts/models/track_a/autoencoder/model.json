@@ -1,0 +1,23 @@
+{
+  "arch": "Autoencoder",
+  "params": {
+    "n_in": 186,
+    "hidden": [
+      128,
+      64
+    ],
+    "bottleneck": 32
+  },
+  "train_config": {
+    "lr": 0.001,
+    "batch_size": 512,
+    "max_epochs": 30,
+    "patience": 4,
+    "weight_decay": 0.0,
+    "seed": 0
+  },
+  "n_parameters": 68698,
+  "threshold": 0.0023371726274490356,
+  "task": "anomaly",
+  "threshold_rule": "95th percentile of validation normal MSE"
+}
