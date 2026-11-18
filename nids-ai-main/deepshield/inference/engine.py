@@ -33,7 +33,6 @@ from deepshield.data import schema
 from deepshield.data.preprocess import Preprocessor
 from deepshield.data.schema import CLASS_ORDER
 from deepshield.training.trainer import load_checkpoint, predict
-from deepshield.xai import explain as E
 
 MAX_UPLOAD_ROWS = 50_000
 
@@ -52,6 +51,79 @@ def use_deploy_data() -> bool:
 
 class InputError(ValueError):
     """Raised when uploaded records cannot be analysed (message is user-facing)."""
+
+
+def _xai():
+    """Import the explanation libraries (SHAP, Captum) only when an explanation is asked for."""
+    from deepshield.xai import explain
+    return explain
+
+
+class LazyModels:
+    """name -> model, loading each model file the first time it is used.
+
+    Loading all models at start-up needs more memory than a small server
+    (Render free: 512 MB) has; most pages only use one or two models.
+    """
+
+    def __init__(self, files: dict[str, Path]):
+        self._files = files
+        self._models: dict = {}
+        self._meta: dict = {}
+        self._lock = threading.Lock()
+        self.meta = _MetaView(self)
+
+    def _load(self, name: str) -> None:
+        with self._lock:
+            if name in self._models:
+                return
+            p = self._files[name]
+            if p.suffix == ".pt":
+                m, meta = load_checkpoint(p)
+            else:
+                obj = joblib.load(p)
+                if isinstance(obj, dict):          # isolation forest + threshold
+                    m, meta = obj["model"], {"threshold": obj["threshold"]}
+                else:
+                    m, meta = obj, {}
+            self._models[name], self._meta[name] = m, meta
+
+    def __getitem__(self, name: str):
+        self._load(name)
+        return self._models[name]
+
+    def __contains__(self, name) -> bool:
+        return name in self._files
+
+    def __iter__(self):
+        return iter(self._files)
+
+    def __len__(self) -> int:
+        return len(self._files)
+
+
+class _MetaView:
+    def __init__(self, models: LazyModels):
+        self._m = models
+
+    def __getitem__(self, name):
+        self._m._load(name)
+        return self._m._meta[name]
+
+    def get(self, name, default=None):
+        return self[name] if name in self._m else default
+
+
+def _model_files(track: str, names) -> dict[str, Path]:
+    d = _models_dir(track)
+    out = {}
+    for name in names:
+        p_pt, p_jl = d / name / "model.pt", d / name / "model.joblib"
+        if p_pt.exists():
+            out[name] = p_pt
+        elif p_jl.exists():
+            out[name] = p_jl
+    return out
 
 
 def _models_dir(track: str) -> Path:
@@ -101,27 +173,29 @@ MODEL_INFO = {
 
 class TrackAEngine:
     def __init__(self):
-        d = _models_dir("A")
         self.pre: Preprocessor = Preprocessor.load(path("models") / "preprocessor_track_a.joblib")
-        self.models: dict = {}
-        self.meta: dict = {}
-        for name, (title, task) in MODEL_INFO.items():
-            p_pt, p_jl = d / name / "model.pt", d / name / "model.joblib"
-            if p_pt.exists():
-                self.models[name], self.meta[name] = load_checkpoint(p_pt)
-            elif p_jl.exists():
-                obj = joblib.load(p_jl)
-                if isinstance(obj, dict):          # isolation forest + threshold
-                    self.models[name], self.meta[name] = obj["model"], {"threshold": obj["threshold"]}
-                else:
-                    self.models[name], self.meta[name] = obj, {}
-        self.names, self.G = E.grouping(self.pre.feature_names_)
+        self.models = LazyModels(_model_files("A", MODEL_INFO))
+        self.meta = self.models.meta
+        self._grouping = None
         self._baseline = None
         self._rf_explainer = None
         self._lock = threading.Lock()
 
     def available(self) -> list[dict]:
         return [{"id": n, "name": MODEL_INFO[n][0], "task": MODEL_INFO[n][1]} for n in self.models]
+
+    @property
+    def names(self):
+        return self._groups()[0]
+
+    @property
+    def G(self):
+        return self._groups()[1]
+
+    def _groups(self):
+        if self._grouping is None:
+            self._grouping = _xai().grouping(self.pre.feature_names_)
+        return self._grouping
 
     def transform(self, df: pd.DataFrame) -> np.ndarray:
         return self.pre.transform(df)
@@ -176,6 +250,7 @@ class TrackAEngine:
         raw = {c: (row[c].iloc[0].item() if hasattr(row[c].iloc[0], "item") else row[c].iloc[0])
                for c in schema.TRACK_A_FEATURES if c in row}
         pred = self.predict(row, model)[0]
+        E = _xai()
         with self._lock:
             if model == "rf_multiclass":
                 self._base()
@@ -266,14 +341,9 @@ class ReplayEngine:
                      "rf_flow": "Per-flow Random Forest"}
 
     def __init__(self, max_records: int | None = None):
-        d = _models_dir("B")
         self.pre: Preprocessor = Preprocessor.load(path("models") / "preprocessor_track_b.joblib")
-        self.models, self.meta = {}, {}
-        for name in self.REPLAY_MODELS:
-            if (d / name / "model.pt").exists():
-                self.models[name], self.meta[name] = load_checkpoint(d / name / "model.pt")
-            elif (d / name / "model.joblib").exists():
-                self.models[name], self.meta[name] = joblib.load(d / name / "model.joblib"), {}
+        self.models = LazyModels(_model_files("B", self.REPLAY_MODELS))
+        self.meta = self.models.meta
         self.seq_len = int(self.meta.get("lstm", {}).get("seq_len", 1))
         self.records, self.truth = self._load_test_block(max_records)
         self.history: dict[str, deque] = {}

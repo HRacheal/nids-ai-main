@@ -46,7 +46,6 @@ from deepshield.inference.engine import (
 )
 from deepshield.intel.mitre import load_validated
 from deepshield.monitoring.history import History
-from deepshield.monitoring.reports import build_csv, build_pdf
 
 log = logging.getLogger("deepshield.app")
 FIGURES = PROJECT_ROOT / "reports" / "figures"
@@ -389,6 +388,7 @@ def create_app(db_path=None, replay_max_records=None) -> tuple[Flask, SocketIO]:
                     except Exception as e:
                         log.warning("explanation for report failed: %s", e)
                     break
+        from deepshield.monitoring.reports import build_pdf   # heavy (PDF/plots): load on demand
         pdf = build_pdf(S.history, metrics_catalog(), expl, local)
         return send_file(
             io.BytesIO(pdf),
@@ -399,6 +399,7 @@ def create_app(db_path=None, replay_max_records=None) -> tuple[Flask, SocketIO]:
 
     @app.route("/api/report.csv")
     def report_csv():
+        from deepshield.monitoring.reports import build_csv
         return send_file(
             io.BytesIO(build_csv(S.history).encode("utf-8")),
             mimetype="text/csv",
