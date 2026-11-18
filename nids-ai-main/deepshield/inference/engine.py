@@ -26,7 +26,9 @@ import numpy as np
 import pandas as pd
 import torch
 
-from deepshield.config import path
+import os
+
+from deepshield.config import PROJECT_ROOT, path
 from deepshield.data import schema
 from deepshield.data.preprocess import Preprocessor
 from deepshield.data.schema import CLASS_ORDER
@@ -34,6 +36,18 @@ from deepshield.training.trainer import load_checkpoint, predict
 from deepshield.xai import explain as E
 
 MAX_UPLOAD_ROWS = 50_000
+
+# Small files for hosting (Render). Built by scripts/make_deploy_data.py from the
+# full local data, and committed to Git. The full data (meta.parquet, part-N,
+# X_train.npy) is too big for GitHub and for a small server.
+DEPLOY_DIR = PROJECT_ROOT / "artifacts" / "deploy"
+REPLAY_FILE = DEPLOY_DIR / "replay_test_block.pkl.gz"
+BASELINE_FILE = DEPLOY_DIR / "track_a_baseline.npz"
+
+
+def use_deploy_data() -> bool:
+    """True on the server (full data absent) or when forced with DEEPSHIELD_DEPLOY_DATA=1."""
+    return os.environ.get("DEEPSHIELD_DEPLOY_DATA") == "1"
 
 
 class InputError(ValueError):
@@ -141,10 +155,19 @@ class TrackAEngine:
 
     def _base(self):
         if self._baseline is None:
-            X = np.load(path("processed") / "track_a" / "X_train.npy", mmap_mode="r")
-            rng = np.random.default_rng(0)
-            self._background = np.asarray(X[rng.choice(len(X), 50, replace=False)])
-            self._baseline = np.asarray(X[::10]).mean(axis=0)
+            full = path("processed") / "track_a" / "X_train.npy"
+            if full.exists() and not use_deploy_data():
+                X = np.load(full, mmap_mode="r")
+                rng = np.random.default_rng(0)
+                self._background = np.asarray(X[rng.choice(len(X), 50, replace=False)])
+                self._baseline = np.asarray(X[::10]).mean(axis=0)
+            elif BASELINE_FILE.exists():
+                # Same 50 background rows and baseline, precomputed from X_train.npy
+                z = np.load(BASELINE_FILE)
+                self._background, self._baseline = z["background"], z["baseline"]
+            else:
+                raise InputError("Explanation baseline missing: run scripts/make_deploy_data.py "
+                                 "and commit artifacts/deploy/.")
         return self._baseline
 
     def explain(self, row: pd.DataFrame, model: str, k: int = 8) -> dict:
@@ -261,6 +284,20 @@ class ReplayEngine:
 
     @staticmethod
     def _load_test_block(max_records):
+        meta_path = path("processed") / "track_b" / "meta.parquet"
+        if (use_deploy_data() or not meta_path.exists()) and REPLAY_FILE.exists():
+            # Hosted mode: prebuilt replay block (same rows, same order, same columns)
+            df = pd.read_pickle(REPLAY_FILE)
+            if max_records:
+                df = df.iloc[:max_records]
+            df = df.reset_index(drop=True)
+            truth = df[["attack_cat", "label"]]
+            records = df.drop(columns=["attack_cat", "label"])
+            return records, truth
+        if not meta_path.exists():
+            raise FileNotFoundError(
+                f"{meta_path} not found and no {REPLAY_FILE.name}: run "
+                "scripts/make_deploy_data.py locally and commit artifacts/deploy/.")
         meta = pd.read_parquet(path("processed") / "track_b" / "meta.parquet")
         test = meta[meta["block"] == "test"].sort_values(["ltime", "source_file", "source_row"],
                                                           kind="stable")

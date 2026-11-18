@@ -1,5 +1,5 @@
 
-"""
+r"""
 DeepShield AI dashboard: Flask + Socket.IO (same stack as the original NIDS-AI).
 
 Pages (single-page app, templates/index.html):
@@ -81,6 +81,7 @@ class State:
                     self._a = TrackAEngine()
                 except Exception as e:
                     self.errors["track_a"] = f"{type(e).__name__}: {e}"
+                    log.exception("Track A engine failed to load")
             return self._a
 
     @property
@@ -91,6 +92,7 @@ class State:
                     self._b = ReplayEngine(self.replay_max_records)
                 except Exception as e:
                     self.errors["track_b"] = f"{type(e).__name__}: {e}"
+                    log.exception("Replay engine failed to load")
             return self._b
 
 
